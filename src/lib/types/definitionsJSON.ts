@@ -11,7 +11,7 @@ export interface PersonFromFacebook {
   first_name: string;
   middle_name: string;
   last_name: string;
-  image: string;
+  avatar_url: string;
   year: number;
 }
 
