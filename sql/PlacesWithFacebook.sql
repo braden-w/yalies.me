@@ -1,5 +1,4 @@
-CREATE
-OR REPLACE VIEW places_with_facebook AS
+CREATE MATERIALIZED VIEW places_with_facebook AS
 SELECT
   places.place_id,
   places.description,
