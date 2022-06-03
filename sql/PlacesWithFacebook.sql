@@ -1,5 +1,4 @@
-CREATE
-OR REPLACE VIEW places_with_facebook AS
+CREATE MATERIALIZED VIEW places_with_facebook AS
 SELECT
   places.place_id,
   places.description,
@@ -17,7 +16,7 @@ SELECT
           facebook.middle_name,
           'last_name',
           facebook.last_name,
-          'image',
+          'avatar_url',
           facebook.image,
           'year',
           facebook.year
@@ -27,8 +26,8 @@ SELECT
       facebook
     WHERE
       facebook.place_id = places.place_id
-      and year is not null
-      and image is not null
+      AND year IS NOT NULL
+      AND image IS NOT NULL
   ) AS people
 FROM
   places;

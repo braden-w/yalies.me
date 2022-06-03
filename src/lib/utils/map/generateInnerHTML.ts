@@ -10,7 +10,7 @@ export function generateInnerHTML(place: definitionsJSON['places_with_people']) 
     .sort(() => 0.5 - Math.random())
     .slice(0, 3)
     .map((person) => {
-      return (<Person>person).avatar_url ?? (<PersonFromFacebook>person).image;
+      return (<Person>person).avatar_url ?? (<PersonFromFacebook>person).avatar_url;
     });
   const { place_id, description } = place;
 
