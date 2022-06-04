@@ -10,7 +10,7 @@
 <script lang="ts">
   import LocationsPage from '$lib/components/pages/LocationsPage.svelte';
   import { refreshPlacesAndTheirPeopleStore } from '$lib/stores/placesAndTheirPeopleStore';
-  
+
   export const prerender = true;
 </script>
 
@@ -20,6 +20,16 @@
 </svelte:head>
 
 <LocationsPage />
+<input type="checkbox" id="my-modal-6" class="modal-toggle" />
+<div class="modal modal-open modal-bottom sm:modal-middle">
+  <div class="modal-box">
+    <h3 class="text-lg font-bold">Congratulations random Interner user!</h3>
+    <p class="py-4">You've been selected for a chance to get one year of subscription to use Wikipedia for free!</p>
+    <div class="modal-action">
+      <label for="my-modal-6" class="btn">Yay!</label>
+    </div>
+  </div>
+</div>
 
 <!-- <div class="min-h-screen-nav hero bg-base-200 text-base-content">
   <div class="hero-content px-4 text-center md:px-0">
