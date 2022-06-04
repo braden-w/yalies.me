@@ -53,21 +53,23 @@
 </script>
 
 <script lang="ts">
+  import TheLocationPromptModal from './TheLocationPromptModal.svelte';
+
   import '../app.css';
 
   // Initialize theme-change, taken from https://github.com/saadeghi/theme-change
+  import { browser } from '$app/env';
+  import LocationAutoComplete from '$lib/components/LocationAutoComplete.svelte';
+  import LoginSplashScreen from '$lib/components/LoginSplashScreen.svelte';
+  import TheNavBar from '$lib/components/TheNavBar.svelte';
+  import { authLoadingStore, signOut } from '$lib/stores/auth/authLoadingStore';
+  import { profileStore, refreshProfileStore } from '$lib/stores/auth/profileStore';
+  import type { definitionsJSON } from '$lib/types/definitionsJSON';
+  import type { UserMetadata } from '$lib/types/UserMetaData';
+  import { supabase } from '$lib/utils/supabaseClient';
+  import type { ApiError, User } from '@supabase/supabase-js';
   import { onMount } from 'svelte';
   import { themeChange } from 'theme-change';
-  import { supabase } from '$lib/utils/supabaseClient';
-  import { refreshProfileStore, profileStore } from '$lib/stores/auth/profileStore';
-  import { authLoadingStore, signOut } from '$lib/stores/auth/authLoadingStore';
-  import type { ApiError, User } from '@supabase/supabase-js';
-  import type { UserMetadata } from '$lib/types/UserMetaData';
-  import { browser } from '$app/env';
-
-  import TheNavBar from '$lib/components/TheNavBar.svelte';
-  import LoginSplashScreen from '$lib/components/LoginSplashScreen.svelte';
-  import type { definitionsJSON } from '$lib/types/definitionsJSON';
 
   // Handle login state on page load
   if (browser) {
@@ -137,6 +139,7 @@
     </div>
   </footer>
 </TheNavBar>
+<TheLocationPromptModal />
 
 <style>
 </style>
