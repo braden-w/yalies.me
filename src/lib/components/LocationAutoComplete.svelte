@@ -127,12 +127,12 @@
         disabled
       />
     {:else}
-      <div class="input-group input-bordered">
+      <div class="input-group">
         <input
           tabindex="0"
           type="text"
           id="location"
-          class="input input-bordered w-full"
+          class="input input-accent w-full border-opacity-20"
           placeholder={'Start typing your city here...'}
           bind:value={query}
         />
