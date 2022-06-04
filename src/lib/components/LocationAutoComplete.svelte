@@ -15,9 +15,9 @@
 
 <script lang="ts">
   import { defaultResults } from '$lib/components/LocationAutoComplete/DefaultResults';
-  import { profileStore,setUserLocation } from '$lib/stores/auth/profileStore';
+  import { profileStore, setUserLocation } from '$lib/stores/auth/profileStore';
   import { supabase } from '$lib/utils/supabaseClient';
-  
+
   export let isCurrentUser: boolean;
   export let query: string;
   console.log('🚀 ~ file: LocationAutoComplete.svelte ~ line 29 ~ query', query);
@@ -106,7 +106,7 @@
 
 <!-- A Location Autocomplete built with DaisyUI that uses the Google Map Places API to autocomplete the location as the user is typing -->
 
-<div class="dropdown dropdown-top w-full">
+<div class="dropdown-top dropdown w-full">
   <div class="form-control">
     <label class="label" for="location">
       <span class="label-text">I'm currently in...</span>
@@ -115,7 +115,7 @@
       tabindex="0"
       type="text"
       id="location"
-      class="input input-bordered"
+      class="input input-bordered input-primary"
       placeholder={isCurrentUser ? 'Start typing your city here...' : 'n/a'}
       bind:value={query}
       disabled={!isCurrentUser}
