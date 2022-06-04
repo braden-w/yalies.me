@@ -26,13 +26,13 @@
 
   let results: google.maps.places.AutocompletePrediction[] = defaultResults;
 
-  const resetResults = () => (results = defaultResults);
+  const resetOptions = () => (results = defaultResults);
 
   // Functions for when query changes value
   let timer: NodeJS.Timeout | null;
   // Don't reset user location because query length is 0 on load
   // $: if (query.length == 0) setUserLocation(null, '');
-  $: if (query.length < 2) resetResults();
+  $: if (query.length < 2) resetOptions();
   $: if (query.length >= 2) {
     if (timer) clearTimeout(timer);
     timer = setTimeout(() => {
@@ -51,7 +51,7 @@
     };
     service.getPlacePredictions(request, (response, status) => {
       if (status === google.maps.places.PlacesServiceStatus.OK) {
-        isQueryLongEnough ? (results = response ?? defaultResults) : resetResults();
+        isQueryLongEnough ? (results = response ?? defaultResults) : resetOptions();
         console.log(results);
       }
     });
