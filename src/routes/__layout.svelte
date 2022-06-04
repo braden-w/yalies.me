@@ -53,6 +53,8 @@
 </script>
 
 <script lang="ts">
+  import TheLocationPromptModal from './TheLocationPromptModal.svelte';
+
   import '../app.css';
 
   // Initialize theme-change, taken from https://github.com/saadeghi/theme-change
@@ -115,11 +117,6 @@
   onMount(() => {
     themeChange(false);
   });
-
-  let modalOpen = $profileStore?.place_id === null;
-  function closeModal() {
-    modalOpen = false;
-  }
 </script>
 
 <TheNavBar>
@@ -142,19 +139,7 @@
     </div>
   </footer>
 </TheNavBar>
-<div class="modal modal-bottom sm:modal-middle" class:modal-open={modalOpen}>
-  <div class="modal-box">
-    <div class="text-xl font-extrabold">Where are you now?</div>
-    <div class="my-4 text-xs text-base-content/70">
-      To continue, enter your current city. For privacy, feel free to use a city that is in proximity rather than exact
-      location.
-    </div>
-    <LocationAutoComplete isCurrentUser={true} query={$profileStore?.description ?? ''} />
-    <div class="modal-action">
-      <label for="my-modal-6" class="btn" on:click={closeModal}>Okay!</label>
-    </div>
-  </div>
-</div>
+<TheLocationPromptModal />
 
 <style>
 </style>
