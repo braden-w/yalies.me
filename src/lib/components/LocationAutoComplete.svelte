@@ -111,17 +111,26 @@
     <label class="label" for="location">
       <span class="label-text">I'm currently in...</span>
     </label>
-    <div class="input-group input-bordered">
+    {#if !isCurrentUser}
       <input
         tabindex="0"
         type="text"
         id="location"
         class="input input-bordered w-full"
-        placeholder={isCurrentUser ? 'Start typing your city here...' : 'n/a'}
+        placeholder={'n/a'}
         bind:value={query}
-        disabled={!isCurrentUser}
+        disabled
       />
-      {#if isCurrentUser}
+    {:else}
+      <div class="input-group input-bordered">
+        <input
+          tabindex="0"
+          type="text"
+          id="location"
+          class="input input-bordered w-full"
+          placeholder={'Start typing your city here...'}
+          bind:value={query}
+        />
         <button class="btn btn-ghost btn-circle border-accent border-opacity-20">
           <!-- Insert a backspace svg -->
           <svg
@@ -139,8 +148,8 @@
             />
           </svg>
         </button>
-      {/if}
-    </div>
+      </div>
+    {/if}
   </div>
 
   <!-- For each result in results, display  -->
