@@ -6,9 +6,8 @@
    */
   export async function load() {
     await refreshPlacesAndTheirPeopleStore();
-    return {
-      status: 200,
-    };
+    loadFacebook();
+    return { status: 200 };
   }
 </script>
 
@@ -20,8 +19,9 @@
   import '@mapbox/mapbox-gl-geocoder/dist/mapbox-gl-geocoder.css';
 
   import { onMount } from 'svelte';
-  import { generateInnerHTML } from '$lib/utils/map/generateInnerHTML';
   import { placesAndTheirPeopleStore, refreshPlacesAndTheirPeopleStore } from '$lib/stores/placesAndTheirPeopleStore';
+  import { facebook, loadFacebook } from '$lib/stores/map/facebook';
+  import { generateInnerHTML } from '$lib/utils/map/generateInnerHTML';
 
   mapboxgl.accessToken = import.meta.env.VITE_MAPBOX_KEY;
 
@@ -112,6 +112,9 @@
       if (!place.lng || !place.lat) return;
       new mapboxgl.Marker(el).setLngLat([place.lng, place.lat]).addTo(map);
     });
+  }
+  function generateFacebookMarkers(){
+        generateMarkers(map, $facebook);
   }
 </script>
 
