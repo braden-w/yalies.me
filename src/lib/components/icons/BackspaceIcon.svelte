@@ -14,8 +14,6 @@
 </script>
 
 <script lang="ts">
-  import BackspaceIcon from './BackspaceIcon.svelte';
-
   import { defaultResults } from '$lib/components/LocationAutoComplete/DefaultResults';
   import { profileStore, setUserLocation } from '$lib/stores/auth/profileStore';
   import { supabase } from '$lib/utils/supabaseClient';
@@ -102,60 +100,18 @@
   }
 </script>
 
-<svelte:head>
-  <script
-    async
-    defer
-    type="text/javascript"
-    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBZFzojqVe47aB3f_QwnU9IKaCZEbeuG0A&libraries=places">
-  </script>
-</svelte:head>
+<svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="h-6 w-6"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+            stroke-width="2"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M12 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2M3 12l6.414 6.414a2 2 0 001.414.586H19a2 2 0 002-2V7a2 2 0 00-2-2h-8.172a2 2 0 00-1.414.586L3 12z"
+            />
+          </svg>
 
-<!-- A Location Autocomplete built with DaisyUI that uses the Google Map Places API to autocomplete the location as the user is typing -->
-
-<div class="dropdown-top dropdown w-full">
-  <div class="form-control">
-    <label class="label" for="location">
-      <span class="label-text">I'm currently in...</span>
-    </label>
-    {#if !isCurrentUser}
-      <input
-        tabindex="0"
-        type="text"
-        id="location"
-        class="input input-bordered w-full"
-        placeholder={'n/a'}
-        bind:value={query}
-        disabled
-      />
-    {:else}
-      <div class="input-group">
-        <input
-          tabindex="0"
-          type="text"
-          id="location"
-          class="input input-accent w-full border-opacity-20"
-          placeholder={'Start typing your city here...'}
-          bind:value={query}
-        />
-        <button class="btn btn-ghost btn-circle border-accent border-opacity-20" on:click={resetLocation}>
-          <!-- Insert a backspace svg -->
-          <BackspaceIcon></BackspaceIcon>
-        </button>
-      </div>
-    {/if}
-  </div>
-
-  <!-- For each result in results, display  -->
-  {#if results.length > 0}
-    <ul class="text-md dropdown-content menu rounded-box menu-compact  w-full bg-base-100 shadow" tabindex="0">
-      {#each results as result}
-        <li on:click={() => handleClick(result)}>
-          <button>
-            {result.description}
-          </button>
-        </li>
-      {/each}
-    </ul>
-  {/if}
-</div>
