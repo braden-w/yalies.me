@@ -40,6 +40,11 @@
     }, 300);
   }
 
+  function resetLocation() {
+    query = '';
+    setUserLocation(null);
+  }
+
   // Fetch results from the Google Places API
   function fetchResults() {
     const sessionToken = new google.maps.places.AutocompleteSessionToken();
@@ -131,7 +136,7 @@
           placeholder={'Start typing your city here...'}
           bind:value={query}
         />
-        <button class="btn btn-ghost btn-circle border-accent border-opacity-20">
+        <button class="btn btn-ghost btn-circle border-accent border-opacity-20" on:click={resetLocation}>
           <!-- Insert a backspace svg -->
           <svg
             xmlns="http://www.w3.org/2000/svg"
