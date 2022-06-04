@@ -14,6 +14,10 @@
   import { refreshPlacesAndTheirPeopleStore } from '$lib/stores/placesAndTheirPeopleStore';
 
   export const prerender = true;
+  let modalOpen = $profileStore?.place_id === null;
+  function closeModal() {
+    modalOpen = false;
+  }
 </script>
 
 <svelte:head>
@@ -22,8 +26,7 @@
 </svelte:head>
 
 <LocationsPage />
-<input type="checkbox" id="my-modal-6" class="modal-toggle" />
-<div class="modal modal-open modal-bottom sm:modal-middle">
+<div class="modal modal-bottom sm:modal-middle" class:modal-open={modalOpen}>
   <div class="modal-box">
     <div class="text-xl font-extrabold">Where are you now?</div>
     <div class="my-4 text-xs text-base-content/70">
@@ -32,7 +35,7 @@
     </div>
     <LocationAutoComplete isCurrentUser={true} query={$profileStore?.description ?? ''} />
     <div class="modal-action">
-      <label for="my-modal-6" class="btn">Okay!</label>
+      <label for="my-modal-6" class="btn" on:click={closeModal}>Okay!</label>
     </div>
   </div>
 </div>
