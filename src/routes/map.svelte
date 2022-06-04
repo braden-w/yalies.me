@@ -25,11 +25,8 @@
 
   mapboxgl.accessToken = import.meta.env.VITE_MAPBOX_KEY;
 
-  const NewHaven = { longitude: -72.9, latitude: 41.3, zoom: 8 };
+  // const NewHaven = { longitude: -72.9, latitude: 41.3, zoom: 8 };
   const CenterUS = { longitude: -95.7, latitude: 37.1, zoom: 2 };
-  // longitude = userProfileInformation.location?.longitude ?? NewHaven.longitude;
-  // latitude = userProfileInformation.location?.latitude ?? NewHaven.latitude;
-  // console.log('longitude, latitude:>> ', longitude, latitude)
 
   onMount(() => {
     const map = new mapboxgl.Map({
@@ -46,10 +43,6 @@
       // * Options here: https://github.com/mapbox/mapbox-gl-geocoder/blob/master/API.md#mapboxgeocoder
       accessToken: mapboxgl.accessToken,
       placeholder: 'Jump to City...',
-      // proximity: {
-      // 	longitude: longitude,
-      // 	latitude: latitude
-      // },
       marker: false,
       /*     mapboxgl: mapboxgl, */
     });
@@ -114,7 +107,7 @@
     });
   }
   function generateFacebookMarkers(){
-        generateMarkers(map, $facebook);
+        generateMarkers(map: mapboxgl.Map, $facebook);
   }
 </script>
 
