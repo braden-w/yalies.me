@@ -13,8 +13,8 @@
   <div class="modal-box">
     <div class="text-xl font-extrabold">Where are you now?</div>
     <div class="my-4 text-xs text-base-content/70">
-      To continue, enter your current city. For privacy, feel free to use a city that is in proximity rather than exact
-      location.
+      For privacy, feel free to use a city that is in proximity rather than exact location. You can always change this
+      later.
     </div>
     <LocationAutoComplete isCurrentUser={true} query={$profileStore?.description ?? ''} />
     <div class="modal-action">
