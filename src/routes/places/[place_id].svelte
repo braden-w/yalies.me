@@ -1,7 +1,14 @@
 <script context="module" lang="ts">
   import type { definitionsJSON } from '$lib/types/definitionsJSON';
 
+  import LocationsListIcon from '$lib/components/icons/LocationsListIcon.svelte';
+  import MapIcon from '$lib/components/icons/MapIcon.svelte';
+  import ListOfUsers from '$lib/components/ListOfUsers.svelte';
+  import TableOfUsers from '$lib/components/TableOfUsers.svelte';
   import { supabase } from '$lib/utils/supabaseClient';
+  import CarouselOfUsers from '../../lib/components/CarouselOfUsers.svelte';
+  import ProfileIcon from '../../lib/components/icons/EditProfileIcon.svelte';
+  import PlaceCheckbox from '../../lib/components/PlaceCheckbox.svelte';
 
   export interface PlaceInformation {
     place_id: string;
@@ -89,17 +96,7 @@
 </script>
 
 <script lang="ts">
-  import ProfileIcon from '../../lib/components/icons/EditProfileIcon.svelte';
-
-  import CarouselOfUsers from '../../lib/components/CarouselOfUsers.svelte';
-
-  import TableOfUsers from '$lib/components/TableOfUsers.svelte';
-
-  import PlaceCheckbox from '../../lib/components/PlaceCheckbox.svelte';
-  import MapIcon from '$lib/components/icons/MapIcon.svelte';
-  import LocationsListIcon from '$lib/components/icons/LocationsListIcon.svelte';
-  import ListOfUsers from '$lib/components/ListOfUsers.svelte';
-
+  
   export let placeInformation: PlaceInformation;
   async function refreshUsersInPlace() {
     const { data: users_in_place, error } = await supabase

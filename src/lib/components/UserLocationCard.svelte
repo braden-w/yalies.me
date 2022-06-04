@@ -1,12 +1,11 @@
 <script lang="ts">
-  import MapIcon from './icons/MapIcon.svelte';
-
+  import LocationsListIcon from '$lib/components/icons/LocationsListIcon.svelte';
   import LocationAutoComplete from '$lib/components/LocationAutoComplete.svelte';
   import { profileStore } from '$lib/stores/auth/profileStore';
   import type { definitionsJSON } from '$lib/types/definitionsJSON';
   import { get } from 'svelte/store';
-  import LocationsListIcon from '$lib/components/icons/LocationsListIcon.svelte';
-
+  import MapIcon from './icons/MapIcon.svelte';
+  
   export let userProfileInformation: definitionsJSON['users_facebook_places'] | null;
   const isCurrentUser = userProfileInformation?.id === get(profileStore)?.id;
 </script>

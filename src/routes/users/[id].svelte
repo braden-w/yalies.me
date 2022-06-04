@@ -1,6 +1,10 @@
 <script context="module" lang="ts">
   import type { definitionsJSON } from '$lib/types/definitionsJSON';
   import { supabase } from '$lib/utils/supabaseClient';
+  import UserCard from '../../lib/components/UserCard.svelte';
+  import UserLocationCard from '../../lib/components/UserLocationCard.svelte';
+  import UserResponsesCard from '../../lib/components/UserResponsesCard.svelte';
+  import UserSocials from '../../lib/components/UserSocials.svelte';
 
   export async function load({ params }: { params: { id: string } }) {
     const { data, error } = await supabase
@@ -17,13 +21,6 @@
 </script>
 
 <script lang="ts">
-  import UserSocials from '../../lib/components/UserSocials.svelte';
-
-  import UserResponsesCard from '../../lib/components/UserResponsesCard.svelte';
-  import UserLocationCard from '../../lib/components/UserLocationCard.svelte';
-  import UserCard from '../../lib/components/UserCard.svelte';
-  import SpotifyPlayer from '$lib/components/SpotifyPlayer.svelte';
-
   export let userProfileInformation: definitionsJSON['users_facebook_places'];
 </script>
 

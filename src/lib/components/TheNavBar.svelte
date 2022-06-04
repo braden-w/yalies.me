@@ -1,7 +1,7 @@
 <script lang="ts">
+  import { signIn,signOut } from '$lib/stores/auth/authLoadingStore';
   import { profileStore } from '$lib/stores/auth/profileStore';
-  import { signIn, signOut } from '$lib/stores/auth/authLoadingStore';
-</script>
+  </script>
 
 <div class="drawer bg-base-100">
   <input id="main-drawer" type="checkbox" class="drawer-toggle" />
@@ -22,7 +22,7 @@
           </label>
         </div>
         <div class="flex-1">
-          <a sveltekit:prefetch href={$profileStore !== null ? '/' : '/'} class="btn btn-ghost text-xl normal-case">
+          <a sveltekit:prefetch href={$profileStore !== null ? '/map' : '/'} class="btn btn-ghost text-xl normal-case">
             Yalies.Me
           </a>
         </div>

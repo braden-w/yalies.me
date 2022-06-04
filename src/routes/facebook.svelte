@@ -11,16 +11,14 @@
 </script>
 
 <script lang="ts">
-  import mapboxgl from 'mapbox-gl';
-  import 'mapbox-gl/dist/mapbox-gl.css';
-
+  import { facebook,loadFacebook } from '$lib/stores/map/facebook';
+  import { generateInnerHTML } from '$lib/utils/map/generateInnerHTML';
   import MapboxGeocoder from '@mapbox/mapbox-gl-geocoder';
   import '@mapbox/mapbox-gl-geocoder/dist/mapbox-gl-geocoder.css';
-
+  import mapboxgl from 'mapbox-gl';
+  import 'mapbox-gl/dist/mapbox-gl.css';
   import { onMount } from 'svelte';
-  import { generateInnerHTML } from '$lib/utils/map/generateInnerHTML';
-  import { facebook, loadFacebook } from '$lib/stores/map/facebook';
-
+  
   mapboxgl.accessToken = import.meta.env.VITE_MAPBOX_KEY;
 
   const NewHaven = { longitude: -72.9, latitude: 41.3, zoom: 8 };

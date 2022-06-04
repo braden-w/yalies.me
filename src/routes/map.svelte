@@ -12,24 +12,22 @@
 </script>
 
 <script lang="ts">
-  import mapboxgl from 'mapbox-gl';
-  import 'mapbox-gl/dist/mapbox-gl.css';
-
+  import { facebook, loadFacebook } from '$lib/stores/map/facebook';
+  import { placesAndTheirPeopleStore, refreshPlacesAndTheirPeopleStore } from '$lib/stores/placesAndTheirPeopleStore';
+  import type { definitionsJSON } from '$lib/types/definitionsJSON';
+  import { generateInnerHTML } from '$lib/utils/map/generateInnerHTML';
   import MapboxGeocoder from '@mapbox/mapbox-gl-geocoder';
   import '@mapbox/mapbox-gl-geocoder/dist/mapbox-gl-geocoder.css';
-
+  import mapboxgl from 'mapbox-gl';
+  import 'mapbox-gl/dist/mapbox-gl.css';
   import { onMount } from 'svelte';
-  import { placesAndTheirPeopleStore, refreshPlacesAndTheirPeopleStore } from '$lib/stores/placesAndTheirPeopleStore';
-  import { facebook, loadFacebook } from '$lib/stores/map/facebook';
-  import { generateInnerHTML } from '$lib/utils/map/generateInnerHTML';
 
   mapboxgl.accessToken = import.meta.env.VITE_MAPBOX_KEY;
 
-  const NewHaven = { longitude: -72.9, latitude: 41.3, zoom: 8 };
+  // const NewHaven = { longitude: -72.9, latitude: 41.3, zoom: 8 };
   const CenterUS = { longitude: -95.7, latitude: 37.1, zoom: 2 };
-  // longitude = userProfileInformation.location?.longitude ?? NewHaven.longitude;
-  // latitude = userProfileInformation.location?.latitude ?? NewHaven.latitude;
-  // console.log('longitude, latitude:>> ', longitude, latitude)
+
+  let generateFacebookMarkers: () => void;
 
   onMount(() => {
     const map = new mapboxgl.Map({
@@ -46,10 +44,6 @@
       // * Options here: https://github.com/mapbox/mapbox-gl-geocoder/blob/master/API.md#mapboxgeocoder
       accessToken: mapboxgl.accessToken,
       placeholder: 'Jump to City...',
-      // proximity: {
-      // 	longitude: longitude,
-      // 	latitude: latitude
-      // },
       marker: false,
       /*     mapboxgl: mapboxgl, */
     });
@@ -65,10 +59,16 @@
     });
 
     generateMarkers(map, $placesAndTheirPeopleStore);
+    generateFacebookMarkers = function () {
+      generateMarkers(map, $facebook);
+    };
   });
 
   /** Add a marker to the map for each place */
-  function generateMarkers(map: mapboxgl.Map, places: typeof $placesAndTheirPeopleStore) {
+  function generateMarkers(
+    map: mapboxgl.Map,
+    places: definitionsJSON['places_with_people'][] | definitionsJSON['places_with_facebook'][] | null
+  ) {
     if (!places) return;
     places.forEach((place) => {
       const el = document.createElement('div');
@@ -113,9 +113,6 @@
       new mapboxgl.Marker(el).setLngLat([place.lng, place.lat]).addTo(map);
     });
   }
-  function generateFacebookMarkers(){
-        generateMarkers(map, $facebook);
-  }
 </script>
 
 <svelte:head>
@@ -125,3 +122,4 @@
 
 <!-- Init mapbox -->
 <div id="map" class="h-screen-nav w-full" />
+<button class="btn" on:click={generateFacebookMarkers} />

@@ -1,12 +1,9 @@
 <script lang="ts">
-  import LinkedInIcon from './icons/LinkedInIcon.svelte';
-
-  import InstagramIcon from './icons/InstagramIcon.svelte';
-
-  import SpotifyIcon from './icons/SpotifyIcon.svelte';
-
   import type { definitionsJSON } from '$lib/types/definitionsJSON';
-
+  import InstagramIcon from './icons/InstagramIcon.svelte';
+  import LinkedInIcon from './icons/LinkedInIcon.svelte';
+  import SpotifyIcon from './icons/SpotifyIcon.svelte';
+  
   export let userProfileInformation: definitionsJSON['users_facebook_places'] | null;
 </script>
 
