@@ -14,10 +14,10 @@
 </script>
 
 <script lang="ts">
-  import { profileStore, setUserLocation } from '$lib/stores/auth/profileStore';
   import { defaultResults } from '$lib/components/LocationAutoComplete/DefaultResults';
+  import { profileStore,setUserLocation } from '$lib/stores/auth/profileStore';
   import { supabase } from '$lib/utils/supabaseClient';
-
+  
   export let isCurrentUser: boolean;
   export let query: string;
   console.log('🚀 ~ file: LocationAutoComplete.svelte ~ line 29 ~ query', query);
