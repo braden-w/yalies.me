@@ -1,9 +1,9 @@
 <!-- @component Generates the dropdown menu that is created when you hover on a component -->
 <script lang="ts">
   import { profileStore } from '$lib/stores/auth/profileStore';
-  import type { Person,PersonFromFacebook } from '$lib/types/definitionsJSON';
+  import type { Person, PersonFromFacebook } from '$lib/types/definitionsJSON';
   import { get } from 'svelte/store';
-  
+
   export let numberOfIconsStacked: number;
   export let place_id: string;
   export let description: string;
@@ -17,13 +17,13 @@
     // Otherwise, return the person's profile
     return `/users/${(<Person>person).id}`;
   }
+
+  $: paddingAboveDropdown = numberOfIconsStacked >= 3 ? '2.5' : numberOfIconsStacked;
 </script>
 
 <ul
   tabindex="0"
-  class="dropdown-content menu menu-compact mt-{numberOfIconsStacked >= 3
-    ? '2.5'
-    : numberOfIconsStacked} rounded-box w-52 bg-base-100 p-2 shadow"
+  class="dropdown-content menu menu-compact mt-{paddingAboveDropdown} rounded-box w-52 bg-base-100 p-2 shadow"
 >
   <li>
     <a class="justify-between" href="/places/{place_id}">
