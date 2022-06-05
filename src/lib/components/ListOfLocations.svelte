@@ -19,7 +19,10 @@
       {#each places as place}
         <li>
           <a href={`/places/${place.place_id}`}>
-            <MapMarkerDropdownStackOfIcons threeAvatars={getThreeAvatarUrls(place)} indicator={place.people?.length} />
+            <MapMarkerDropdownStackOfIcons
+              threeAvatars={getThreeAvatarUrls(place) ?? []}
+              indicator={place.people?.length ?? 0}
+            />
             {place.description}
           </a>
         </li>
