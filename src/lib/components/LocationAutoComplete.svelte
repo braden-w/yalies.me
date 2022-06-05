@@ -14,8 +14,10 @@
 </script>
 
 <script lang="ts">
-  import { profileStore, setUserLocation } from '$lib/stores/auth/profileStore';
+  import BackspaceIcon from '$lib/components/icons/BackspaceIcon.svelte';
+
   import { defaultResults } from '$lib/components/LocationAutoComplete/DefaultResults';
+  import { profileStore, setUserLocation } from '$lib/stores/auth/profileStore';
   import { supabase } from '$lib/utils/supabaseClient';
 
   export let isCurrentUser: boolean;
@@ -26,18 +28,23 @@
 
   let results: google.maps.places.AutocompletePrediction[] = defaultResults;
 
-  const resetResults = () => (results = defaultResults);
+  const resetOptions = () => (results = defaultResults);
 
   // Functions for when query changes value
   let timer: NodeJS.Timeout | null;
   // Don't reset user location because query length is 0 on load
   // $: if (query.length == 0) setUserLocation(null, '');
-  $: if (query.length < 2) resetResults();
+  $: if (query.length < 2) resetOptions();
   $: if (query.length >= 2) {
     if (timer) clearTimeout(timer);
     timer = setTimeout(() => {
       fetchResults();
     }, 300);
+  }
+
+  function resetLocation() {
+    query = '';
+    setUserLocation(null);
   }
 
   // Fetch results from the Google Places API
@@ -51,7 +58,7 @@
     };
     service.getPlacePredictions(request, (response, status) => {
       if (status === google.maps.places.PlacesServiceStatus.OK) {
-        isQueryLongEnough ? (results = response ?? defaultResults) : resetResults();
+        isQueryLongEnough ? (results = response ?? defaultResults) : resetOptions();
         console.log(results);
       }
     });
@@ -86,10 +93,7 @@
       await uploadPlaceToSupabase(payload);
 
       await setUserLocation(place_id);
-      console.log(
-        '🚀 ~ file: LocationAutoComplete.svelte ~ line 110 ~ $profileStore',
-        $profileStore
-      );
+      console.log('🚀 ~ file: LocationAutoComplete.svelte ~ line 110 ~ $profileStore', $profileStore);
     } catch (error: any) {
       alert(error.message);
     } finally {
@@ -109,28 +113,42 @@
 
 <!-- A Location Autocomplete built with DaisyUI that uses the Google Map Places API to autocomplete the location as the user is typing -->
 
-<div class="dropdown dropdown-top w-full">
+<div class="dropdown-top dropdown w-full">
   <div class="form-control">
     <label class="label" for="location">
       <span class="label-text">I'm currently in...</span>
     </label>
-    <input
-      tabindex="0"
-      type="text"
-      id="location"
-      class="input input-bordered"
-      placeholder={isCurrentUser ? 'Start typing your city here...' : 'n/a'}
-      bind:value={query}
-      disabled={!isCurrentUser}
-    />
+    {#if !isCurrentUser}
+      <input
+        tabindex="0"
+        type="text"
+        id="location"
+        class="input input-bordered w-full"
+        placeholder={'n/a'}
+        bind:value={query}
+        disabled
+      />
+    {:else}
+      <div class="input-group">
+        <input
+          tabindex="0"
+          type="text"
+          id="location"
+          class="input input-accent w-full border-opacity-20"
+          placeholder={'Start typing your city here...'}
+          bind:value={query}
+        />
+        <button class="btn btn-ghost btn-circle border-accent border-opacity-20" on:click={resetLocation}>
+          <!-- Insert a backspace svg -->
+          <BackspaceIcon />
+        </button>
+      </div>
+    {/if}
   </div>
 
   <!-- For each result in results, display  -->
   {#if results.length > 0}
-    <ul
-      class="text-md dropdown-content menu rounded-box menu-compact  w-full bg-base-100 shadow"
-      tabindex="0"
-    >
+    <ul class="text-md dropdown-content menu rounded-box menu-compact w-full bg-base-200 shadow" tabindex="0">
       {#each results as result}
         <li on:click={() => handleClick(result)}>
           <button>

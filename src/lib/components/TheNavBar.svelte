@@ -1,6 +1,6 @@
 <script lang="ts">
-  import { profileStore } from '$lib/stores/auth/profileStore';
   import { signIn, signOut } from '$lib/stores/auth/authLoadingStore';
+  import { profileStore } from '$lib/stores/auth/profileStore';
 </script>
 
 <div class="drawer bg-base-100">
@@ -17,24 +17,17 @@
               viewBox="0 0 24 24"
               class="inline-block h-5 w-5 stroke-current"
             >
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
-                d="M4 6h16M4 12h16M4 18h16"
-              />
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
             </svg>
           </label>
         </div>
         <div class="flex-1">
-          <a
-            sveltekit:prefetch
-            href={$profileStore !== null ? '/' : '/'}
-            class="btn btn-ghost text-xl normal-case">Yalies.Me</a
-          >
+          <a sveltekit:prefetch href={$profileStore !== null ? '/map' : '/'} class="btn btn-ghost text-xl normal-case">
+            Yalies.Me
+          </a>
         </div>
         <div class="flex-none">
-          <div class="dropdown dropdown-end">
+          <div class="dropdown-end dropdown">
             <label for="main-drawer " tabindex="0" class="btn btn-ghost btn-circle">
               <div class="indicator">
                 <svg
@@ -54,10 +47,7 @@
                 <span class="badge indicator-item badge-sm" />
               </div>
             </label>
-            <div
-              tabindex="0"
-              class="card dropdown-content card-compact mt-3 w-52 bg-base-100 shadow"
-            >
+            <div tabindex="0" class="card dropdown-content card-compact mt-3 w-52 bg-base-100 shadow">
               <div class="card-body">
                 <span class="text-lg font-bold">Notifications</span>
                 <span class="text-info">You'll see notifications here!</span>
@@ -67,7 +57,7 @@
               </div>
             </div>
           </div>
-          <div title="Change Theme" class="dropdown dropdown-end ">
+          <div title="Change Theme" class="dropdown-end dropdown ">
             <div tabindex="0" class="btn btn-ghost gap-1 normal-case">
               <svg
                 width="20"
@@ -83,7 +73,8 @@
                   stroke-width="2"
                   d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01"
                 />
-              </svg> <span class="hidden md:inline">Theme</span>
+              </svg>
+              <span class="hidden md:inline">Theme</span>
               <svg
                 width="12px"
                 height="12px"
@@ -104,10 +95,7 @@
                   data-set-theme="yale"
                   data-act-class="outline"
                 >
-                  <div
-                    data-theme="yale"
-                    class="w-full cursor-pointer bg-base-100 font-sans text-base-content"
-                  >
+                  <div data-theme="yale" class="w-full cursor-pointer bg-base-100 font-sans text-base-content">
                     <div class="grid grid-cols-5 grid-rows-3">
                       <div class="col-span-5 row-span-3 row-start-1 flex gap-1 px-4 py-3">
                         <div class="flex-grow text-sm font-bold">yale</div>
@@ -126,10 +114,7 @@
                   data-set-theme="light"
                   data-act-class="outline"
                 >
-                  <div
-                    data-theme="light"
-                    class="w-full cursor-pointer bg-base-100 font-sans text-base-content"
-                  >
+                  <div data-theme="light" class="w-full cursor-pointer bg-base-100 font-sans text-base-content">
                     <div class="grid grid-cols-5 grid-rows-3">
                       <div class="col-span-5 row-span-3 row-start-1 flex gap-1 px-4 py-3">
                         <div class="flex-grow text-sm font-bold">light</div>
@@ -148,10 +133,7 @@
                   data-set-theme="dark"
                   data-act-class="outline"
                 >
-                  <div
-                    data-theme="dark"
-                    class="w-full cursor-pointer bg-base-100 font-sans text-base-content"
-                  >
+                  <div data-theme="dark" class="w-full cursor-pointer bg-base-100 font-sans text-base-content">
                     <div class="grid grid-cols-5 grid-rows-3">
                       <div class="col-span-5 row-span-3 row-start-1 flex gap-1 px-4 py-3">
                         <div class="flex-grow text-sm font-bold">dark</div>
@@ -170,10 +152,7 @@
                   data-set-theme="cupcake"
                   data-act-class="outline"
                 >
-                  <div
-                    data-theme="cupcake"
-                    class="w-full cursor-pointer bg-base-100 font-sans text-base-content"
-                  >
+                  <div data-theme="cupcake" class="w-full cursor-pointer bg-base-100 font-sans text-base-content">
                     <div class="grid grid-cols-5 grid-rows-3">
                       <div class="col-span-5 row-span-3 row-start-1 flex gap-1 px-4 py-3">
                         <div class="flex-grow text-sm font-bold">cupcake</div>
@@ -192,10 +171,7 @@
                   data-set-theme="bumblebee"
                   data-act-class="outline"
                 >
-                  <div
-                    data-theme="bumblebee"
-                    class="w-full cursor-pointer bg-base-100 font-sans text-base-content"
-                  >
+                  <div data-theme="bumblebee" class="w-full cursor-pointer bg-base-100 font-sans text-base-content">
                     <div class="grid grid-cols-5 grid-rows-3">
                       <div class="col-span-5 row-span-3 row-start-1 flex gap-1 px-4 py-3">
                         <div class="flex-grow text-sm font-bold">bumblebee</div>
@@ -214,10 +190,7 @@
                   data-set-theme="emerald"
                   data-act-class="outline"
                 >
-                  <div
-                    data-theme="emerald"
-                    class="w-full cursor-pointer bg-base-100 font-sans text-base-content"
-                  >
+                  <div data-theme="emerald" class="w-full cursor-pointer bg-base-100 font-sans text-base-content">
                     <div class="grid grid-cols-5 grid-rows-3">
                       <div class="col-span-5 row-span-3 row-start-1 flex gap-1 px-4 py-3">
                         <div class="flex-grow text-sm font-bold">emerald</div>
@@ -236,10 +209,7 @@
                   data-set-theme="corporate"
                   data-act-class="outline"
                 >
-                  <div
-                    data-theme="corporate"
-                    class="w-full cursor-pointer bg-base-100 font-sans text-base-content"
-                  >
+                  <div data-theme="corporate" class="w-full cursor-pointer bg-base-100 font-sans text-base-content">
                     <div class="grid grid-cols-5 grid-rows-3">
                       <div class="col-span-5 row-span-3 row-start-1 flex gap-1 px-4 py-3">
                         <div class="flex-grow text-sm font-bold">corporate</div>
@@ -258,10 +228,7 @@
                   data-set-theme="synthwave"
                   data-act-class="outline"
                 >
-                  <div
-                    data-theme="synthwave"
-                    class="w-full cursor-pointer bg-base-100 font-sans text-base-content"
-                  >
+                  <div data-theme="synthwave" class="w-full cursor-pointer bg-base-100 font-sans text-base-content">
                     <div class="grid grid-cols-5 grid-rows-3">
                       <div class="col-span-5 row-span-3 row-start-1 flex gap-1 px-4 py-3">
                         <div class="flex-grow text-sm font-bold">synthwave</div>
@@ -280,10 +247,7 @@
                   data-set-theme="retro"
                   data-act-class="outline"
                 >
-                  <div
-                    data-theme="retro"
-                    class="w-full cursor-pointer bg-base-100 font-sans text-base-content"
-                  >
+                  <div data-theme="retro" class="w-full cursor-pointer bg-base-100 font-sans text-base-content">
                     <div class="grid grid-cols-5 grid-rows-3">
                       <div class="col-span-5 row-span-3 row-start-1 flex gap-1 px-4 py-3">
                         <div class="flex-grow text-sm font-bold">retro</div>
@@ -302,10 +266,7 @@
                   data-set-theme="cyberpunk"
                   data-act-class="outline"
                 >
-                  <div
-                    data-theme="cyberpunk"
-                    class="w-full cursor-pointer bg-base-100 font-sans text-base-content"
-                  >
+                  <div data-theme="cyberpunk" class="w-full cursor-pointer bg-base-100 font-sans text-base-content">
                     <div class="grid grid-cols-5 grid-rows-3">
                       <div class="col-span-5 row-span-3 row-start-1 flex gap-1 px-4 py-3">
                         <div class="flex-grow text-sm font-bold">cyberpunk</div>
@@ -324,10 +285,7 @@
                   data-set-theme="valentine"
                   data-act-class="outline"
                 >
-                  <div
-                    data-theme="valentine"
-                    class="w-full cursor-pointer bg-base-100 font-sans text-base-content"
-                  >
+                  <div data-theme="valentine" class="w-full cursor-pointer bg-base-100 font-sans text-base-content">
                     <div class="grid grid-cols-5 grid-rows-3">
                       <div class="col-span-5 row-span-3 row-start-1 flex gap-1 px-4 py-3">
                         <div class="flex-grow text-sm font-bold">valentine</div>
@@ -346,10 +304,7 @@
                   data-set-theme="halloween"
                   data-act-class="outline"
                 >
-                  <div
-                    data-theme="halloween"
-                    class="w-full cursor-pointer bg-base-100 font-sans text-base-content"
-                  >
+                  <div data-theme="halloween" class="w-full cursor-pointer bg-base-100 font-sans text-base-content">
                     <div class="grid grid-cols-5 grid-rows-3">
                       <div class="col-span-5 row-span-3 row-start-1 flex gap-1 px-4 py-3">
                         <div class="flex-grow text-sm font-bold">halloween</div>
@@ -368,10 +323,7 @@
                   data-set-theme="garden"
                   data-act-class="outline"
                 >
-                  <div
-                    data-theme="garden"
-                    class="w-full cursor-pointer bg-base-100 font-sans text-base-content"
-                  >
+                  <div data-theme="garden" class="w-full cursor-pointer bg-base-100 font-sans text-base-content">
                     <div class="grid grid-cols-5 grid-rows-3">
                       <div class="col-span-5 row-span-3 row-start-1 flex gap-1 px-4 py-3">
                         <div class="flex-grow text-sm font-bold">garden</div>
@@ -390,10 +342,7 @@
                   data-set-theme="forest"
                   data-act-class="outline"
                 >
-                  <div
-                    data-theme="forest"
-                    class="w-full cursor-pointer bg-base-100 font-sans text-base-content"
-                  >
+                  <div data-theme="forest" class="w-full cursor-pointer bg-base-100 font-sans text-base-content">
                     <div class="grid grid-cols-5 grid-rows-3">
                       <div class="col-span-5 row-span-3 row-start-1 flex gap-1 px-4 py-3">
                         <div class="flex-grow text-sm font-bold">forest</div>
@@ -412,10 +361,7 @@
                   data-set-theme="aqua"
                   data-act-class="outline"
                 >
-                  <div
-                    data-theme="aqua"
-                    class="w-full cursor-pointer bg-base-100 font-sans text-base-content"
-                  >
+                  <div data-theme="aqua" class="w-full cursor-pointer bg-base-100 font-sans text-base-content">
                     <div class="grid grid-cols-5 grid-rows-3">
                       <div class="col-span-5 row-span-3 row-start-1 flex gap-1 px-4 py-3">
                         <div class="flex-grow text-sm font-bold">aqua</div>
@@ -434,10 +380,7 @@
                   data-set-theme="lofi"
                   data-act-class="outline"
                 >
-                  <div
-                    data-theme="lofi"
-                    class="w-full cursor-pointer bg-base-100 font-sans text-base-content"
-                  >
+                  <div data-theme="lofi" class="w-full cursor-pointer bg-base-100 font-sans text-base-content">
                     <div class="grid grid-cols-5 grid-rows-3">
                       <div class="col-span-5 row-span-3 row-start-1 flex gap-1 px-4 py-3">
                         <div class="flex-grow text-sm font-bold">lofi</div>
@@ -456,10 +399,7 @@
                   data-set-theme="pastel"
                   data-act-class="outline"
                 >
-                  <div
-                    data-theme="pastel"
-                    class="w-full cursor-pointer bg-base-100 font-sans text-base-content"
-                  >
+                  <div data-theme="pastel" class="w-full cursor-pointer bg-base-100 font-sans text-base-content">
                     <div class="grid grid-cols-5 grid-rows-3">
                       <div class="col-span-5 row-span-3 row-start-1 flex gap-1 px-4 py-3">
                         <div class="flex-grow text-sm font-bold">pastel</div>
@@ -478,10 +418,7 @@
                   data-set-theme="fantasy"
                   data-act-class="outline"
                 >
-                  <div
-                    data-theme="fantasy"
-                    class="w-full cursor-pointer bg-base-100 font-sans text-base-content"
-                  >
+                  <div data-theme="fantasy" class="w-full cursor-pointer bg-base-100 font-sans text-base-content">
                     <div class="grid grid-cols-5 grid-rows-3">
                       <div class="col-span-5 row-span-3 row-start-1 flex gap-1 px-4 py-3">
                         <div class="flex-grow text-sm font-bold">fantasy</div>
@@ -500,10 +437,7 @@
                   data-set-theme="wireframe"
                   data-act-class="outline"
                 >
-                  <div
-                    data-theme="wireframe"
-                    class="w-full cursor-pointer bg-base-100 font-sans text-base-content"
-                  >
+                  <div data-theme="wireframe" class="w-full cursor-pointer bg-base-100 font-sans text-base-content">
                     <div class="grid grid-cols-5 grid-rows-3">
                       <div class="col-span-5 row-span-3 row-start-1 flex gap-1 px-4 py-3">
                         <div class="flex-grow text-sm font-bold">wireframe</div>
@@ -522,10 +456,7 @@
                   data-set-theme="black"
                   data-act-class="outline"
                 >
-                  <div
-                    data-theme="black"
-                    class="w-full cursor-pointer bg-base-100 font-sans text-base-content"
-                  >
+                  <div data-theme="black" class="w-full cursor-pointer bg-base-100 font-sans text-base-content">
                     <div class="grid grid-cols-5 grid-rows-3">
                       <div class="col-span-5 row-span-3 row-start-1 flex gap-1 px-4 py-3">
                         <div class="flex-grow text-sm font-bold">black</div>
@@ -544,10 +475,7 @@
                   data-set-theme="luxury"
                   data-act-class="outline"
                 >
-                  <div
-                    data-theme="luxury"
-                    class="w-full cursor-pointer bg-base-100 font-sans text-base-content"
-                  >
+                  <div data-theme="luxury" class="w-full cursor-pointer bg-base-100 font-sans text-base-content">
                     <div class="grid grid-cols-5 grid-rows-3">
                       <div class="col-span-5 row-span-3 row-start-1 flex gap-1 px-4 py-3">
                         <div class="flex-grow text-sm font-bold">luxury</div>
@@ -566,10 +494,7 @@
                   data-set-theme="dracula"
                   data-act-class="outline"
                 >
-                  <div
-                    data-theme="dracula"
-                    class="w-full cursor-pointer bg-base-100 font-sans text-base-content"
-                  >
+                  <div data-theme="dracula" class="w-full cursor-pointer bg-base-100 font-sans text-base-content">
                     <div class="grid grid-cols-5 grid-rows-3">
                       <div class="col-span-5 row-span-3 row-start-1 flex gap-1 px-4 py-3">
                         <div class="flex-grow text-sm font-bold">dracula</div>
@@ -588,10 +513,7 @@
                   data-set-theme="cmyk"
                   data-act-class="outline"
                 >
-                  <div
-                    data-theme="cmyk"
-                    class="w-full cursor-pointer bg-base-100 font-sans text-base-content"
-                  >
+                  <div data-theme="cmyk" class="w-full cursor-pointer bg-base-100 font-sans text-base-content">
                     <div class="grid grid-cols-5 grid-rows-3">
                       <div class="col-span-5 row-span-3 row-start-1 flex gap-1 px-4 py-3">
                         <div class="flex-grow text-sm font-bold">cmyk</div>
@@ -610,10 +532,7 @@
                   data-set-theme="autumn"
                   data-act-class="outline"
                 >
-                  <div
-                    data-theme="autumn"
-                    class="w-full cursor-pointer bg-base-100 font-sans text-base-content"
-                  >
+                  <div data-theme="autumn" class="w-full cursor-pointer bg-base-100 font-sans text-base-content">
                     <div class="grid grid-cols-5 grid-rows-3">
                       <div class="col-span-5 row-span-3 row-start-1 flex gap-1 px-4 py-3">
                         <div class="flex-grow text-sm font-bold">autumn</div>
@@ -632,10 +551,7 @@
                   data-set-theme="business"
                   data-act-class="outline"
                 >
-                  <div
-                    data-theme="business"
-                    class="w-full cursor-pointer bg-base-100 font-sans text-base-content"
-                  >
+                  <div data-theme="business" class="w-full cursor-pointer bg-base-100 font-sans text-base-content">
                     <div class="grid grid-cols-5 grid-rows-3">
                       <div class="col-span-5 row-span-3 row-start-1 flex gap-1 px-4 py-3">
                         <div class="flex-grow text-sm font-bold">business</div>
@@ -654,10 +570,7 @@
                   data-set-theme="acid"
                   data-act-class="outline"
                 >
-                  <div
-                    data-theme="acid"
-                    class="w-full cursor-pointer bg-base-100 font-sans text-base-content"
-                  >
+                  <div data-theme="acid" class="w-full cursor-pointer bg-base-100 font-sans text-base-content">
                     <div class="grid grid-cols-5 grid-rows-3">
                       <div class="col-span-5 row-span-3 row-start-1 flex gap-1 px-4 py-3">
                         <div class="flex-grow text-sm font-bold">acid</div>
@@ -676,10 +589,7 @@
                   data-set-theme="lemonade"
                   data-act-class="outline"
                 >
-                  <div
-                    data-theme="lemonade"
-                    class="w-full cursor-pointer bg-base-100 font-sans text-base-content"
-                  >
+                  <div data-theme="lemonade" class="w-full cursor-pointer bg-base-100 font-sans text-base-content">
                     <div class="grid grid-cols-5 grid-rows-3">
                       <div class="col-span-5 row-span-3 row-start-1 flex gap-1 px-4 py-3">
                         <div class="flex-grow text-sm font-bold">lemonade</div>
@@ -698,10 +608,7 @@
                   data-set-theme="night"
                   data-act-class="outline"
                 >
-                  <div
-                    data-theme="night"
-                    class="w-full cursor-pointer bg-base-100 font-sans text-base-content"
-                  >
+                  <div data-theme="night" class="w-full cursor-pointer bg-base-100 font-sans text-base-content">
                     <div class="grid grid-cols-5 grid-rows-3">
                       <div class="col-span-5 row-span-3 row-start-1 flex gap-1 px-4 py-3">
                         <div class="flex-grow text-sm font-bold">night</div>
@@ -720,10 +627,7 @@
                   data-set-theme="coffee"
                   data-act-class="outline"
                 >
-                  <div
-                    data-theme="coffee"
-                    class="w-full cursor-pointer bg-base-100 font-sans text-base-content"
-                  >
+                  <div data-theme="coffee" class="w-full cursor-pointer bg-base-100 font-sans text-base-content">
                     <div class="grid grid-cols-5 grid-rows-3">
                       <div class="col-span-5 row-span-3 row-start-1 flex gap-1 px-4 py-3">
                         <div class="flex-grow text-sm font-bold">coffee</div>
@@ -742,10 +646,7 @@
                   data-set-theme="winter"
                   data-act-class="outline"
                 >
-                  <div
-                    data-theme="winter"
-                    class="w-full cursor-pointer bg-base-100 font-sans text-base-content"
-                  >
+                  <div data-theme="winter" class="w-full cursor-pointer bg-base-100 font-sans text-base-content">
                     <div class="grid grid-cols-5 grid-rows-3">
                       <div class="col-span-5 row-span-3 row-start-1 flex gap-1 px-4 py-3">
                         <div class="flex-grow text-sm font-bold">winter</div>
@@ -762,7 +663,7 @@
               </div>
             </div>
           </div>
-          <div class="dropdown dropdown-end">
+          <div class="dropdown-end dropdown">
             <label tabindex="0" class="avatar btn btn-ghost btn-circle">
               <div class="w-10 rounded-full">
                 <img
@@ -772,12 +673,9 @@
                 />
               </div>
             </label>
-            <ul
-              tabindex="0"
-              class="dropdown-content menu rounded-box menu-compact mt-3 w-52 bg-base-100 p-2 shadow"
-            >
+            <ul tabindex="0" class="dropdown-content menu rounded-box menu-compact mt-3 w-52 bg-base-100 p-2 shadow">
               <li>
-                <a class="justify-between" sveltekit:prefetch href="/profile"> Profile </a>
+                <a class="justify-between" sveltekit:prefetch href="/profile">Profile</a>
               </li>
               <li>
                 <a class="justify-between" sveltekit:prefetch href="/map">Map</a>
@@ -811,7 +709,7 @@
     <ul class="menu w-80 overflow-y-auto bg-base-200 p-4 text-base-content">
       <!-- Sidebar content here -->
       <li>
-        <a sveltekit:prefetch href="/places/New Haven, CT"> Who's in New Haven </a>
+        <a sveltekit:prefetch href="/places/New Haven, CT">Who's in New Haven</a>
       </li>
       <li>
         <a sveltekit:prefetch href="/map">Map</a>
@@ -823,7 +721,7 @@
         <a sveltekit:prefetch href="/profile">Profile</a>
       </li>
       <li>
-        <a sveltekit:prefetch href="/landing"> Landing </a>
+        <a sveltekit:prefetch href="/landing">Landing</a>
       </li>
       <!-- <li>
         <a sveltekit:prefetch href="">Ride Share</a>

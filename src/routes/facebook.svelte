@@ -6,25 +6,23 @@
    */
   export async function load() {
     await loadFacebook();
-    return { status: 200, props: {} };
+    return { status: 200 };
   }
 </script>
 
 <script lang="ts">
-  import mapboxgl from 'mapbox-gl';
-  import 'mapbox-gl/dist/mapbox-gl.css';
-
-  import MapboxGeocoder from '@mapbox/mapbox-gl-geocoder';
-  import '@mapbox/mapbox-gl-geocoder/dist/mapbox-gl-geocoder.css';
-
-  import { onMount } from 'svelte';
   import { facebook, loadFacebook } from '$lib/stores/map/facebook';
   import { generateInnerHTML } from '$lib/utils/map/generateInnerHTML';
+  import MapboxGeocoder from '@mapbox/mapbox-gl-geocoder';
+  import '@mapbox/mapbox-gl-geocoder/dist/mapbox-gl-geocoder.css';
+  import mapboxgl from 'mapbox-gl';
+  import 'mapbox-gl/dist/mapbox-gl.css';
+  import { onMount } from 'svelte';
 
   mapboxgl.accessToken = import.meta.env.VITE_MAPBOX_KEY;
 
   const NewHaven = { longitude: -72.9, latitude: 41.3, zoom: 8 };
-  const CenterUS = { longitude: -95.7, latitude: 37.1, zoom: 3 };
+  const CenterUS = { longitude: -95.7, latitude: 37.1, zoom: 2 };
   // longitude = userProfileInformation.location?.longitude ?? NewHaven.longitude;
   // latitude = userProfileInformation.location?.latitude ?? NewHaven.latitude;
   // console.log('longitude, latitude:>> ', longitude, latitude)
@@ -62,11 +60,13 @@
       // loadFacebook(map!, queryYear)
     });
 
-    console.log('🚀 ~ file: facebook.svelte ~ line 67 ~ onMount ~ facebook', $facebook);
-    if ($facebook === null) return;
-    $facebook.forEach((place) => {
-      console.log('🚀 ~ file: facebook.svelte ~ line 71 ~ $facebook.forEach ~ place', place);
+    generateMarkers(map, $facebook);
+  });
 
+  /** Add a marker to the map for each place */
+  function generateMarkers(map: mapboxgl.Map, places: typeof $facebook) {
+    if (!places) return;
+    places.forEach((place) => {
       const el = document.createElement('div');
       el.className = 'marker';
       el.innerHTML = generateInnerHTML(place);
@@ -87,7 +87,7 @@
         });
       });
 
-      const scalePercent = (defaultPxSize = 40, defaultZoom = 3, scaleFactor = 0.1) => {
+      const scalePercent = (defaultPxSize = 32, defaultZoom = 2, scaleFactor = 0.1) => {
         const scalePercent = 1 + (map.getZoom() - defaultZoom) * scaleFactor;
         return defaultPxSize * scalePercent;
       };
@@ -105,9 +105,10 @@
       });
 
       // Add the marker to the map
+      if (!place.lng || !place.lat) return;
       new mapboxgl.Marker(el).setLngLat([place.lng, place.lat]).addTo(map);
     });
-  });
+  }
 </script>
 
 <svelte:head>

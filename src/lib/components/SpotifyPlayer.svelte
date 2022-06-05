@@ -7,9 +7,8 @@
       return defaultPlaylistID;
     }
     return (
-      url.match(
-        /^(https:\/\/open.spotify.com\/playlist\/|spotify:user:spotify:playlist:)([a-zA-Z0-9]+)(.*)$/
-      )?.[2] ?? defaultPlaylistID
+      url.match(/^(https:\/\/open.spotify.com\/playlist\/|spotify:user:spotify:playlist:)([a-zA-Z0-9]+)(.*)$/)?.[2] ??
+      defaultPlaylistID
     );
   }
 </script>

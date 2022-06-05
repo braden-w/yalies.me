@@ -11,12 +11,11 @@ export interface PersonFromFacebook {
   first_name: string;
   middle_name: string;
   last_name: string;
-  image: string;
+  avatar_url: string;
   year: number;
 }
 
-export interface definitionsJSON
-  extends Omit<definitions, 'places_with_people' | 'user_responses'> {
+export interface definitionsJSON extends Omit<definitions, 'places_with_people' | 'user_responses'> {
   places_with_people: {
     /**
      * Format: character varying

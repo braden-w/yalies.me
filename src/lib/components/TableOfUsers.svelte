@@ -1,6 +1,5 @@
 <script lang="ts">
   import UserSocials from '$lib/components/UserSocials.svelte';
-
   import type { PlaceInformation } from 'src/routes/places/[place_id].svelte';
 
   export let users: PlaceInformation['users_in_place'];
@@ -44,9 +43,9 @@
           {/if}
           <span class="badge badge-sm badge-ghost">{user?.major}</span>
         </td>
-        <td> <UserSocials userProfileInformation={user} /></td>
+        <td><UserSocials userProfileInformation={user} /></td>
         <th>
-          <a href={`/users/${user.id}`} class="btn btn-primary btn-md"> Go to Profile </a>
+          <a href={`/users/${user.id}`} class="btn btn-primary btn-md">Go to Profile</a>
         </th>
       </tr>
     {/each}

@@ -10,7 +10,7 @@
     <tr>
       <th />
       <th>Name</th>
-      <th> People </th>
+      <th>People</th>
       <th />
     </tr>
   </thead>
@@ -22,7 +22,7 @@
           <th>
             {index + 1}
           </th>
-          <td> {place.description} </td>
+          <td>{place.description}</td>
           <td class="overflow-visible">
             <div class="avatar-group -space-x-2 overflow-visible">
               {#each place?.people as person}
@@ -35,7 +35,7 @@
             <!-- {getPeopleNames(place)} -->
           </td>
           <th>
-            <a href={`/places/${place.place_id}`} class="btn btn-primary btn-md"> Go to Place </a>
+            <a href={`/places/${place.place_id}`} class="btn btn-primary btn-md">Go to Place</a>
           </th>
         </tr>
       {/each}

@@ -8,18 +8,13 @@
 </script>
 
 <script lang="ts">
-  import UserSocials from '$lib/components/UserSocials.svelte';
-
-  import UserResponsesCard from '$lib/components/UserResponsesCard.svelte';
-  import UserLocationCard from '$lib/components/UserLocationCard.svelte';
-  import UserCard from '$lib/components/UserCard.svelte';
-  import SpotifyPlayer from '$lib/components/SpotifyPlayer.svelte';
-  import { profileStore } from '$lib/stores/auth/profileStore';
   import ListOfLocations from '$lib/components/ListOfLocations.svelte';
-  import {
-    placesAndTheirPeopleStore,
-    refreshPlacesAndTheirPeopleStore,
-  } from '$lib/stores/placesAndTheirPeopleStore';
+  import UserCard from '$lib/components/UserCard.svelte';
+  import UserLocationCard from '$lib/components/UserLocationCard.svelte';
+  import UserResponsesCard from '$lib/components/UserResponsesCard.svelte';
+  import UserSocials from '$lib/components/UserSocials.svelte';
+  import { profileStore } from '$lib/stores/auth/profileStore';
+  import { placesAndTheirPeopleStore, refreshPlacesAndTheirPeopleStore } from '$lib/stores/placesAndTheirPeopleStore';
 </script>
 
 <svelte:head>

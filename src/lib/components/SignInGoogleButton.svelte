@@ -1,7 +1,6 @@
 <script lang="ts">
-  import GoogleIcon from './icons/GoogleIcon.svelte';
-
   import { signIn } from '$lib/stores/auth/authLoadingStore';
+  import GoogleIcon from './icons/GoogleIcon.svelte';
   export let loading = false;
 </script>
 

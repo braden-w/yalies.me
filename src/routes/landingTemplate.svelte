@@ -14,11 +14,12 @@
       <h2 class="mt-32 mb-2 text-4xl font-extrabold md:text-6xl">Clean HTML</h2>
       <h3 class="mb-5 text-3xl font-bold">with component classes</h3>
       <p class="mx-auto mb-5 w-full max-w-lg">
-        Don't reinvent the wheel! <br />daisyUI adds classes to Tailwind CSS for all common UI
-        components. Classes like
-        <span class="badge badge-outline">btn</span>,
-        <span class="badge badge-outline">card</span>, etc. This allows us to focus on important
-        things instead of making basic elements for every project.
+        Don't reinvent the wheel! <br />
+        daisyUI adds classes to Tailwind CSS for all common UI components. Classes like
+        <span class="badge badge-outline">btn</span>
+        ,
+        <span class="badge badge-outline">card</span>
+        , etc. This allows us to focus on important things instead of making basic elements for every project.
       </p>
       <p class="mx-auto mt-20 w-full max-w-lg" />
       <div class="font-bold">Creating a button</div>
@@ -28,23 +29,20 @@
         <div class="flex w-full flex-col text-left">
           <div class="mockup-code mx-auto w-full max-w-xs flex-grow shadow-lg sm:max-w-md">
             <pre>
-<code
-                >&lt;a class="<span class="text-amber-400"
-                  >inline-block px-4 py-3
+<code>&lt;a class="<span class="text-amber-400">inline-block px-4 py-3
     text-sm font-semibold text-center
     text-white uppercase transition
     duration-200 ease-in-out bg-indigo-600 
     rounded-md cursor-pointer
-    hover:bg-indigo-700</span
-                >"&gt;Button&lt;/a&gt;</code
-              >
+    hover:bg-indigo-700</span>"&gt;Button&lt;/a&gt;</code>
 </pre>
           </div>
           <div class="mt-4 flex h-16 items-start justify-center">
             <button
               class="inline-block cursor-pointer rounded-md bg-indigo-600 px-4 py-3 text-center text-sm font-semibold uppercase text-white transition duration-200 ease-in-out hover:bg-indigo-700"
-              >Button</button
             >
+              Button
+            </button>
           </div>
         </div>
         <div class="divider uppercase text-base-content/50 lg:divider-horizontal">vs</div>
@@ -67,24 +65,18 @@
         <div class="flex w-full flex-col text-left">
           <div class="mockup-code mx-auto w-full max-w-xs flex-grow shadow-lg sm:max-w-md">
             <pre>
-<code
-                >&lt;div class="<span class="text-amber-400">relative</span>"&gt;
-    &lt;input type="checkbox" class="<span class="text-amber-400"
-                  >peer
+<code>&lt;div class="<span class="text-amber-400">relative</span>"&gt;
+    &lt;input type="checkbox" class="<span class="text-amber-400">peer
     appearance-none cursor-pointer
     border border-gray-300 rounded-full
-    checked:border-gray-900 w-12 h-6</span
-                >"/&gt;
-    &lt;span class="<span class="text-amber-400"
-                  >peer-checked:left-7
+    checked:border-gray-900 w-12 h-6</span>"/&gt;
+    &lt;span class="<span class="text-amber-400">peer-checked:left-7
     peer-checked:bg-gray-900
     transition-all duration-200
     pointer-events-none w-4 h-4
     block absolute top-1 left-1
-    rounded-full bg-gray-300</span
-                >"&gt;&lt;/span&gt;
-  &lt;/div&gt;</code
-              >
+    rounded-full bg-gray-300</span>"&gt;&lt;/span&gt;
+  &lt;/div&gt;</code>
 </pre>
           </div>
           <div class="mt-4 flex h-16 items-start justify-center">
@@ -103,9 +95,7 @@
         </div>
         <div class="divider uppercase text-base-content/50 lg:divider-horizontal">vs</div>
         <div class="flex w-full flex-col text-left">
-          <div
-            class="mockup-code relative mx-auto w-full max-w-xs flex-grow shadow-lg sm:max-w-md lg:overflow-hidden"
-          >
+          <div class="mockup-code relative mx-auto w-full max-w-xs flex-grow shadow-lg sm:max-w-md lg:overflow-hidden">
             <pre>
 <code>&lt;input type="checkbox" class="<span class="text-teal-500">toggle</span>"/&gt;</code>
 </pre>
@@ -133,24 +123,18 @@
         <div class="flex w-full flex-col text-left">
           <div class="mockup-code mx-auto w-full max-w-xs flex-grow shadow-lg sm:max-w-md">
             <pre>
-<code
-                >&lt;ul class="py-3 bg-gray-100 rounded-xl"&gt;
+<code>&lt;ul class="py-3 bg-gray-100 rounded-xl"&gt;
     &lt;li&gt;
-      &lt;span class="<span class="text-amber-400"
-                  >block px-5 py-1 text-xs text-gray-400 font-bold</span
-                >"&gt;Menu Title&lt;/span&gt;
+      &lt;span class="<span
+                  class="text-amber-400">block px-5 py-1 text-xs text-gray-400 font-bold</span>"&gt;Menu Title&lt;/span&gt;
     &lt;/li&gt;
-    &lt;li&gt;&lt;a class="<span class="text-amber-400"
-                  >block px-5 py-3 rounded-lg text-gray-900 hover:bg-gray-200 active:bg-indigo-600 active:text-white outline-none cursor-pointer</span
-                >"&gt;First Menu Item&lt;/a&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a class="<span class="text-amber-400"
-                  >block px-5 py-3 rounded-lg text-gray-900 hover:bg-gray-200 active:bg-indigo-600 active:text-white outline-none cursor-pointer</span
-                >"&gt;Second Menu Item&lt;/a&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a class="<span class="text-amber-400"
-                  >block px-5 py-3 rounded-lg text-gray-900 hover:bg-gray-200 active:bg-indigo-600 active:text-white outline-none cursor-pointer</span
-                >"&gt;Third Menu Item&lt;/a&gt;&lt;/li&gt;
-  &lt;/ul&gt;</code
-              >
+    &lt;li&gt;&lt;a class="<span
+                  class="text-amber-400">block px-5 py-3 rounded-lg text-gray-900 hover:bg-gray-200 active:bg-indigo-600 active:text-white outline-none cursor-pointer</span>"&gt;First Menu Item&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a class="<span
+                  class="text-amber-400">block px-5 py-3 rounded-lg text-gray-900 hover:bg-gray-200 active:bg-indigo-600 active:text-white outline-none cursor-pointer</span>"&gt;Second Menu Item&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a class="<span
+                  class="text-amber-400">block px-5 py-3 rounded-lg text-gray-900 hover:bg-gray-200 active:bg-indigo-600 active:text-white outline-none cursor-pointer</span>"&gt;Third Menu Item&lt;/a&gt;&lt;/li&gt;
+  &lt;/ul&gt;</code>
 </pre>
           </div>
           <div class="mt-4 flex items-start justify-center overflow-hidden">
@@ -162,22 +146,25 @@
                 <a
                   href="/"
                   class="block cursor-pointer rounded-lg px-5 py-3 text-gray-900 outline-none hover:bg-gray-200 active:bg-indigo-600 active:text-white"
-                  >First Menu Item</a
                 >
+                  First Menu Item
+                </a>
               </li>
               <li>
                 <a
                   href="/"
                   class="block cursor-pointer rounded-lg px-5 py-3 text-gray-900 outline-none hover:bg-gray-200 active:bg-indigo-600 active:text-white"
-                  >Second Menu Item</a
                 >
+                  Second Menu Item
+                </a>
               </li>
               <li>
                 <a
                   href="/"
                   class="block cursor-pointer rounded-lg px-5 py-3 text-gray-900 outline-none hover:bg-gray-200 active:bg-indigo-600 active:text-white"
-                  >Third Menu Item</a
                 >
+                  Third Menu Item
+                </a>
               </li>
             </ul>
           </div>
@@ -186,17 +173,14 @@
         <div class="flex w-full flex-col text-left">
           <div class="mockup-code mx-auto w-full max-w-xs flex-grow shadow-lg sm:max-w-md">
             <pre class="pr-4">
-<code
-                >&lt;ul class="<span class="text-teal-500">menu</span
-                > p-3 bg-base-200 rounded-xl"&gt;
+<code>&lt;ul class="<span class="text-teal-500">menu</span> p-3 bg-base-200 rounded-xl"&gt;
     &lt;li class="<span class="text-teal-500">menu-title</span>"&gt;
       &lt;span&gt;Menu Title&lt;/span&gt;
     &lt;/li&gt;
     &lt;li&gt;&lt;a&gt;First Menu Item&lt;/a&gt;&lt;/li&gt;
     &lt;li&gt;&lt;a&gt;Second Menu Item&lt;/a&gt;&lt;/li&gt;
     &lt;li&gt;&lt;a&gt;Third Menu Item&lt;/a&gt;&lt;/li&gt;
-  &lt;/ul&gt;</code
-              >
+  &lt;/ul&gt;</code>
 </pre>
           </div>
           <div class="mt-4 flex items-start justify-center">

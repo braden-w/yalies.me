@@ -11,10 +11,7 @@ export const signIn = async () => {
     // Get current url
     const redirectURL = window.location.href.split('#')[0];
     // alert(redirectURL)
-    const { error } = await supabase.auth.signIn(
-      { provider: 'google' },
-      { redirectTo: redirectURL }
-    );
+    const { error } = await supabase.auth.signIn({ provider: 'google' }, { redirectTo: redirectURL });
     if (error) throw error;
   } catch (error) {
     if ((error as ApiError).message) {

@@ -36,8 +36,6 @@ export async function refreshPlacesAndTheirPeopleStore() {
 /** A store that lists places and their people.
  * Lists all places with people, and their corresponding people.
  */
-export const placesAndTheirPeopleStore: Writable<definitionsJSON['places_with_people'][] | null> =
-  createStore<definitionsJSON['places_with_people'][] | null>(
-    'yalies.me-placesAndTheirPeopleStore',
-    null
-  );
+export const placesAndTheirPeopleStore: Writable<definitionsJSON['places_with_people'][] | null> = createStore<
+  definitionsJSON['places_with_people'][] | null
+>('yalies.me-placesAndTheirPeopleStore', null);

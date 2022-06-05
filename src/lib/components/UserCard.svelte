@@ -4,9 +4,7 @@
   export let userProfileInformation: definitionsJSON['users_facebook_places'] | null;
 </script>
 
-<div
-  class="rounded-box grid place-items-center items-center gap-4 bg-base-100 p-4 py-8 shadow-xl xl:mx-0 xl:w-full"
->
+<div class="rounded-box grid place-items-center items-center gap-4 bg-base-100 p-4 py-8 shadow-xl xl:mx-0 xl:w-full">
   <div class="avatar online">
     <div class="mask mask-squircle h-24 w-24 bg-base-content bg-opacity-10 p-px">
       <img
@@ -49,12 +47,7 @@
       <div class="btn-group">
         <button class="btn btn-accent btn-sm">Add Friend</button>
         <button aria-label="button component" class="btn btn-accent btn-square btn-sm">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 24 24"
-            class="h-6 w-6 stroke-current"
-          >
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="h-6 w-6 stroke-current">
             <path
               stroke-linecap="round"
               stroke-linejoin="round"
@@ -71,9 +64,7 @@
           <h2 class="card-title font-extrabold capitalize">Keep Track of People I Met</h2>
           <p class="text-sm text-neutral-content text-opacity-80">Coming Soon!</p>
           <div class="mt-4 flex">
-            <a href="mailto:braden.wong@yale.edu" class="btn btn-primary btn-sm">
-              Request Feature
-            </a>
+            <a href="mailto:braden.wong@yale.edu" class="btn btn-primary btn-sm">Request Feature</a>
           </div>
         </div>
       </div>

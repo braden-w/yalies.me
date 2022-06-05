@@ -29,12 +29,8 @@
   <div class="hero-content px-4 text-center md:px-0">
     <div>
       <h2 class="mt-32 mb-2 text-4xl font-extrabold md:text-6xl">Yalies.Me</h2>
-      <h3 class="mb-5 text-3xl font-bold">
-        An app that solves a single question: who is in my area?
-      </h3>
-      <p class="mx-auto w-full max-w-xl">
-        Quickly browse a map, list of users, and cities to see who is in your area.
-      </p>
+      <h3 class="mb-5 text-3xl font-bold">An app that solves a single question: who is in my area?</h3>
+      <p class="mx-auto w-full max-w-xl">Quickly browse a map, list of users, and cities to see who is in your area.</p>
       <section class="overflow-hidden text-gray-700">
         <div class="container mx-auto px-5 py-2 lg:px-32 lg:py-8">
           <div class="-m-1 flex flex-wrap md:-m-2">

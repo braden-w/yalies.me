@@ -51,13 +51,9 @@
             <div class="card compact rounded-box bg-neutral-focus text-neutral-content shadow-xl">
               <div class="card-body">
                 <h2 class="card-title font-extrabold capitalize">avatar component</h2>
-                <p class="text-sm text-neutral-content text-opacity-80">
-                  Use avatar component with any size
-                </p>
+                <p class="text-sm text-neutral-content text-opacity-80">Use avatar component with any size</p>
                 <div class="mt-4 flex justify-end">
-                  <a href="/components/avatar" class="btn btn-primary btn-sm xl:btn-md"
-                    >See component</a
-                  >
+                  <a href="/components/avatar" class="btn btn-primary btn-sm xl:btn-md">See component</a>
                 </div>
               </div>
             </div>
@@ -80,9 +76,7 @@
                 User divider component to visually separate items
               </p>
               <div class="mt-4 flex justify-end">
-                <a href="/components/divider" class="btn btn-primary btn-sm xl:btn-md"
-                  >See component</a
-                >
+                <a href="/components/divider" class="btn btn-primary btn-sm xl:btn-md">See component</a>
               </div>
             </div>
           </div>
@@ -121,9 +115,7 @@
                   Show progressbar, loadings or simple bar charts using progress component
                 </p>
                 <div class="mt-4 flex justify-end">
-                  <a href="/components/progress" class="btn btn-primary btn-sm xl:btn-md"
-                    >See component</a
-                  >
+                  <a href="/components/progress" class="btn btn-primary btn-sm xl:btn-md">See component</a>
                 </div>
               </div>
             </div>
@@ -158,9 +150,7 @@
                   Show alerts, warnings, notification or other info
                 </p>
                 <div class="mt-4 flex justify-end">
-                  <a href="/components/alert" class="btn btn-primary btn-sm xl:btn-md"
-                    >See component</a
-                  >
+                  <a href="/components/alert" class="btn btn-primary btn-sm xl:btn-md">See component</a>
                 </div>
               </div>
             </div>
@@ -197,9 +187,7 @@
                   Show alerts, warnings, notification or other info
                 </p>
                 <div class="mt-4 flex justify-end">
-                  <a href="/components/alert" class="btn btn-primary btn-sm xl:btn-md"
-                    >See component</a
-                  >
+                  <a href="/components/alert" class="btn btn-primary btn-sm xl:btn-md">See component</a>
                 </div>
               </div>
             </div>
@@ -236,9 +224,7 @@
                   Show alerts, warnings, notification or other info
                 </p>
                 <div class="mt-4 flex justify-end">
-                  <a href="/components/alert" class="btn btn-primary btn-sm xl:btn-md"
-                    >See component</a
-                  >
+                  <a href="/components/alert" class="btn btn-primary btn-sm xl:btn-md">See component</a>
                 </div>
               </div>
             </div>
@@ -288,13 +274,9 @@
             <div class="card compact rounded-box bg-neutral-focus text-neutral-content shadow-xl">
               <div class="card-body">
                 <h2 class="card-title font-extrabold capitalize">toggle component</h2>
-                <p class="text-sm text-neutral-content text-opacity-80">
-                  Use toggle to switch between two states
-                </p>
+                <p class="text-sm text-neutral-content text-opacity-80">Use toggle to switch between two states</p>
                 <div class="mt-4 flex justify-end">
-                  <a href="/components/toggle" class="btn btn-primary btn-sm xl:btn-md"
-                    >See component</a
-                  >
+                  <a href="/components/toggle" class="btn btn-primary btn-sm xl:btn-md">See component</a>
                 </div>
               </div>
             </div>
@@ -305,19 +287,15 @@
         <div class="dropdown dropdown-end dropdown-top">
           <div tabindex="0">
             <button class="btn btn-secondary btn-block space-x-2">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                class="h-6 w-6 stroke-current"
-              >
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="h-6 w-6 stroke-current">
                 <path
                   stroke-linecap="round"
                   stroke-linejoin="round"
                   stroke-width="2"
                   d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
                 />
-              </svg> <span>Apply settings</span>
+              </svg>
+              <span>Apply settings</span>
             </button>
           </div>
           <div tabindex="0" class="dropdown-content py-2">
@@ -328,9 +306,7 @@
                   Buttons come in various shapes, colors and sizes
                 </p>
                 <div class="mt-4 flex justify-end">
-                  <a href="/components/button" class="btn btn-primary btn-sm xl:btn-md"
-                    >See component</a
-                  >
+                  <a href="/components/button" class="btn btn-primary btn-sm xl:btn-md">See component</a>
                 </div>
               </div>
             </div>

@@ -17,15 +17,12 @@ const headers = [
 function myFunction() {
   // clearEntireSpreadsheet();
   writeHeadersOnRow(3);
-  const response = UrlFetchApp.fetch(
-    `${VITE_SUPABASE_URL}/rest/v1/users_facebook_places?id=not.is.null`,
-    {
-      headers: {
-        Apikey: VITE_SUPABASE_ANON_KEY,
-        Authorization: `Bearer ${VITE_SUPABASE_ANON_KEY}`,
-      },
-    }
-  );
+  const response = UrlFetchApp.fetch(`${VITE_SUPABASE_URL}/rest/v1/users_facebook_places?id=not.is.null`, {
+    headers: {
+      Apikey: VITE_SUPABASE_ANON_KEY,
+      Authorization: `Bearer ${VITE_SUPABASE_ANON_KEY}`,
+    },
+  });
   const data = JSON.parse(response.getContentText());
   Logger.log(data);
 

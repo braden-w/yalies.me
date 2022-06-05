@@ -2,7 +2,9 @@ import { profileStore } from '$lib/stores/auth/profileStore';
 import type { definitionsJSON, Person, PersonFromFacebook } from '$lib/types/definitionsJSON';
 import { get } from 'svelte/store';
 
-export function generateInnerHTML(place: definitionsJSON['places_with_people']) {
+export function generateInnerHTML(
+  place: definitionsJSON['places_with_people'] | definitionsJSON['places_with_facebook']
+) {
   // Get 3 random people from the 'people' property of placeWithPeople
   const people = place.people ?? [];
   /**The first three people who will be the icons in the stack on the map */
@@ -10,7 +12,7 @@ export function generateInnerHTML(place: definitionsJSON['places_with_people']) 
     .sort(() => 0.5 - Math.random())
     .slice(0, 3)
     .map((person) => {
-      return (<Person>person).avatar_url ?? (<PersonFromFacebook>person).image;
+      return (<Person>person).avatar_url ?? (<PersonFromFacebook>person).avatar_url;
     });
   const { place_id, description } = place;
 

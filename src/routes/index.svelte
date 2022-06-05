@@ -8,17 +8,8 @@
 </script>
 
 <script lang="ts">
-  import EditProfileIcon from '$lib/components/icons/EditProfileIcon.svelte';
-
-  import LocationsListIcon from '$lib/components/icons/LocationsListIcon.svelte';
-  import MapIcon from '$lib/components/icons/MapIcon.svelte';
-
-  import ListOfLocations from '$lib/components/ListOfLocations.svelte';
   import LocationsPage from '$lib/components/pages/LocationsPage.svelte';
-  import {
-    placesAndTheirPeopleStore,
-    refreshPlacesAndTheirPeopleStore,
-  } from '$lib/stores/placesAndTheirPeopleStore';
+  import { refreshPlacesAndTheirPeopleStore } from '$lib/stores/placesAndTheirPeopleStore';
 
   export const prerender = true;
 </script>

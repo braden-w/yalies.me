@@ -1,11 +1,8 @@
 <script lang="ts">
-  import LinkedInIcon from './icons/LinkedInIcon.svelte';
-
-  import InstagramIcon from './icons/InstagramIcon.svelte';
-
-  import SpotifyIcon from './icons/SpotifyIcon.svelte';
-
   import type { definitionsJSON } from '$lib/types/definitionsJSON';
+  import InstagramIcon from './icons/InstagramIcon.svelte';
+  import LinkedInIcon from './icons/LinkedInIcon.svelte';
+  import SpotifyIcon from './icons/SpotifyIcon.svelte';
 
   export let userProfileInformation: definitionsJSON['users_facebook_places'] | null;
 </script>
@@ -14,13 +11,7 @@
   {#if userProfileInformation?.email}
     <a class="btn btn-circle btn-sm" href={`mailto:${userProfileInformation?.email}`}>
       <!-- Make an svg email icon -->
-      <svg
-        class="h-6 w-6"
-        fill="none"
-        stroke="currentColor"
-        viewBox="0 0 24 24"
-        xmlns="http://www.w3.org/2000/svg"
-      >
+      <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
         <path
           stroke-linecap="round"
           stroke-linejoin="round"

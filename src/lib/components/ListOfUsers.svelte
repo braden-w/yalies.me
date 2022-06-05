@@ -18,13 +18,7 @@
               <div class="flex items-center space-x-3">
                 <div class="avatar">
                   <div class="mask mask-squircle w-8">
-                    <img
-                      src={user.avatar_url}
-                      alt="Profile"
-                      height="100%"
-                      width="100%"
-                      referrerpolicy="no-referrer"
-                    />
+                    <img src={user.avatar_url} alt="Profile" height="100%" width="100%" referrerpolicy="no-referrer" />
                   </div>
                 </div>
                 <div>

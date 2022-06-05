@@ -10,13 +10,7 @@
       <div class="avatar">
         <div class="mask mask-squircle w-8">
           <a href={`#${user.id}`}>
-            <img
-              src={user.avatar_url}
-              alt="Profile"
-              height="100%"
-              width="100%"
-              referrerpolicy="no-referrer"
-            />
+            <img src={user.avatar_url} alt="Profile" height="100%" width="100%" referrerpolicy="no-referrer" />
           </a>
         </div>
       </div>

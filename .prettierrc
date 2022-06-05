@@ -1,6 +1,7 @@
 {
+  "htmlWhitespaceSensitivity": "ignore",
   "plugins": ["prettier-plugin-tailwindcss"],
-  "printWidth": 100,
+  "printWidth": 120,
   "singleQuote": true,
   "trailingComma": "es5"
 }

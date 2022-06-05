@@ -7,9 +7,4 @@
   <meta name="description" content="Butteries" />
 </svelte:head>
 
-<iframe
-  src="https://yalebutterybook.com"
-  title="Yale Buttery Book"
-  class="h-screen-nav w-full"
-  frameborder="0"
-/>
+<iframe src="https://yalebutterybook.com" title="Yale Buttery Book" class="h-screen-nav w-full" frameborder="0" />

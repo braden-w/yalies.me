@@ -46,10 +46,7 @@ export async function uploadPlaceToSupabase(payload: Payload) {
   });
   if (errorPlaces) throw errorPlaces;
 }
-export async function uploadUserPlaceSelectionToSupabase(
-  user_response_id: string | undefined,
-  place_id: string
-) {
+export async function uploadUserPlaceSelectionToSupabase(user_response_id: string | undefined, place_id: string) {
   if (!user_response_id) return;
   const { error: errorUserIDtoPlaceID } = await supabase
     .from('user_responses')

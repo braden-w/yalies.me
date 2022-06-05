@@ -1,6 +1,5 @@
 <script lang="ts">
   import type { placesAndTheirPeopleStore } from '$lib/stores/placesAndTheirPeopleStore';
-
   import type { definitionsJSON, Person } from '$lib/types/definitionsJSON';
   import { generateStackOfIcons } from '$lib/utils/map/generateInnerHTML';
 

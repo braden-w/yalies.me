@@ -1,7 +1,14 @@
 <script context="module" lang="ts">
   import type { definitionsJSON } from '$lib/types/definitionsJSON';
 
+  import LocationsListIcon from '$lib/components/icons/LocationsListIcon.svelte';
+  import MapIcon from '$lib/components/icons/MapIcon.svelte';
+  import ListOfUsers from '$lib/components/ListOfUsers.svelte';
+  import TableOfUsers from '$lib/components/TableOfUsers.svelte';
   import { supabase } from '$lib/utils/supabaseClient';
+  import CarouselOfUsers from '../../lib/components/CarouselOfUsers.svelte';
+  import ProfileIcon from '../../lib/components/icons/EditProfileIcon.svelte';
+  import PlaceCheckbox from '../../lib/components/PlaceCheckbox.svelte';
 
   export interface PlaceInformation {
     place_id: string;
@@ -41,8 +48,7 @@
       .select(selectQuery)
       .eq('description', query);
     if (errorMatchPlaceDescription) console.log(errorMatchPlaceDescription);
-    if (dataMatchPlaceDescription?.length !== 0)
-      return { data: dataMatchPlaceDescription, redirect: null };
+    if (dataMatchPlaceDescription?.length !== 0) return { data: dataMatchPlaceDescription, redirect: null };
 
     // Assuming there are no users, and there are no rows in users_facebook_places, fetch place description from the places table
     const { data: dataJustPlace, error: errorJustPlace } = await supabase
@@ -53,11 +59,10 @@
     if (dataJustPlace?.length !== 0) return { data: dataJustPlace, redirect: null };
 
     // As a last resort, attempt to fuzzy match the query by place_description
-    const { data: dataFuzzyMatchPlaceDescription, error: errorFuzzyMatchPlaceDescription } =
-      await supabase
-        .from<definitionsJSON['users_facebook_places']>('users_facebook_places')
-        .select(selectQuery)
-        .ilike('description', `%${query}%`);
+    const { data: dataFuzzyMatchPlaceDescription, error: errorFuzzyMatchPlaceDescription } = await supabase
+      .from<definitionsJSON['users_facebook_places']>('users_facebook_places')
+      .select(selectQuery)
+      .ilike('description', `%${query}%`);
     if (errorFuzzyMatchPlaceDescription) console.log(errorFuzzyMatchPlaceDescription);
     if (dataFuzzyMatchPlaceDescription && dataFuzzyMatchPlaceDescription?.length !== 0) {
       const redirect = {
@@ -91,17 +96,6 @@
 </script>
 
 <script lang="ts">
-  import ProfileIcon from '../../lib/components/icons/EditProfileIcon.svelte';
-
-  import CarouselOfUsers from '../../lib/components/CarouselOfUsers.svelte';
-
-  import TableOfUsers from '$lib/components/TableOfUsers.svelte';
-
-  import PlaceCheckbox from '../../lib/components/PlaceCheckbox.svelte';
-  import MapIcon from '$lib/components/icons/MapIcon.svelte';
-  import LocationsListIcon from '$lib/components/icons/LocationsListIcon.svelte';
-  import ListOfUsers from '$lib/components/ListOfUsers.svelte';
-
   export let placeInformation: PlaceInformation;
   async function refreshUsersInPlace() {
     const { data: users_in_place, error } = await supabase
@@ -134,8 +128,8 @@
         <div class="divider" />
         <a sveltekit:prefetch href="/profile" class="btn btn-primary">
           <ProfileIcon />
-          Edit My Profile</a
-        >
+          Edit My Profile
+        </a>
       </div>
     </div>
   </div>
@@ -161,18 +155,10 @@
     </div>
     <div class="w-full overflow-x-auto">
       <div class="tabs mb-2 w-full flex-grow-0">
-        <button
-          class="tab tab-bordered tab-lg flex-1"
-          class:tab-active={tab === 0}
-          on:click={() => (tab = 0)}
-        >
+        <button class="tab tab-bordered tab-lg flex-1" class:tab-active={tab === 0} on:click={() => (tab = 0)}>
           List
         </button>
-        <button
-          class="tab tab-bordered tab-lg flex-1"
-          class:tab-active={tab === 1}
-          on:click={() => (tab = 1)}
-        >
+        <button class="tab tab-bordered tab-lg flex-1" class:tab-active={tab === 1} on:click={() => (tab = 1)}>
           Table
         </button>
       </div>

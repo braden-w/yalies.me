@@ -1,16 +1,13 @@
 <script lang="ts">
   import InstagramIcon from '$lib/components/icons/InstagramIcon.svelte';
   import InterestsIcon from '$lib/components/icons/InterestsIcon.svelte';
-
   import LinkedInIcon from '$lib/components/icons/LinkedInIcon.svelte';
   import MajorIcon from '$lib/components/icons/MajorIcon.svelte';
   import PhoneIcon from '$lib/components/icons/PhoneIcon.svelte';
   import SpotifyIcon from '$lib/components/icons/SpotifyIcon.svelte';
-  import UniversityIcon from '$lib/components/icons/UniversityIcon.svelte';
-
   import { profileStore, uploadUserResponses } from '$lib/stores/auth/profileStore';
-  import { get } from 'svelte/store';
   import type { definitionsJSON } from '$lib/types/definitionsJSON';
+  import { get } from 'svelte/store';
 
   export let userProfileInformation: definitionsJSON['users_facebook_places'] | null;
 
@@ -107,9 +104,7 @@
     {/each}
     <div class="divider" />
     <div class="text-xl font-extrabold">Social Media</div>
-    <div class="my-4 text-xs text-base-content/70">
-      Instagram Handle, LinkedIn URL, and Spotify URL go here
-    </div>
+    <div class="my-4 text-xs text-base-content/70">Instagram Handle, LinkedIn URL, and Spotify URL go here</div>
     {#each userIntegrations as { name, label, icon, value }}
       <div class="form-control">
         <label class="label" for={name}>
@@ -136,12 +131,7 @@
         class:loading={isApplySettingsLoading}
         on:click={() => applySettings([...inputsList, ...userIntegrations])}
       >
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          fill="none"
-          viewBox="0 0 24 24"
-          class="h-6 w-6 stroke-current"
-        >
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="h-6 w-6 stroke-current">
           <path
             stroke-linecap="round"
             stroke-linejoin="round"
