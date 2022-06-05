@@ -1,7 +1,7 @@
 <script lang="ts">
   import UserSocials from '$lib/components/UserSocials.svelte';
   import type { PlaceInformation } from 'src/routes/places/[place_id].svelte';
-  
+
   export let users: PlaceInformation['users_in_place'];
 </script>
 

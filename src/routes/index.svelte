@@ -10,7 +10,7 @@
 <script lang="ts">
   import LocationsPage from '$lib/components/pages/LocationsPage.svelte';
   import { refreshPlacesAndTheirPeopleStore } from '$lib/stores/placesAndTheirPeopleStore';
-  
+
   export const prerender = true;
 </script>
 

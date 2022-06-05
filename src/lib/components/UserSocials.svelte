@@ -3,7 +3,7 @@
   import InstagramIcon from './icons/InstagramIcon.svelte';
   import LinkedInIcon from './icons/LinkedInIcon.svelte';
   import SpotifyIcon from './icons/SpotifyIcon.svelte';
-  
+
   export let userProfileInformation: definitionsJSON['users_facebook_places'] | null;
 </script>
 

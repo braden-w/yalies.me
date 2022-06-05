@@ -96,7 +96,6 @@
 </script>
 
 <script lang="ts">
-  
   export let placeInformation: PlaceInformation;
   async function refreshUsersInPlace() {
     const { data: users_in_place, error } = await supabase

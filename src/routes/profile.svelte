@@ -14,8 +14,8 @@
   import UserResponsesCard from '$lib/components/UserResponsesCard.svelte';
   import UserSocials from '$lib/components/UserSocials.svelte';
   import { profileStore } from '$lib/stores/auth/profileStore';
-  import { placesAndTheirPeopleStore,refreshPlacesAndTheirPeopleStore } from '$lib/stores/placesAndTheirPeopleStore';
-  </script>
+  import { placesAndTheirPeopleStore, refreshPlacesAndTheirPeopleStore } from '$lib/stores/placesAndTheirPeopleStore';
+</script>
 
 <svelte:head>
   <title>Profile</title>
