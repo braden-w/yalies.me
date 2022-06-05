@@ -27,6 +27,8 @@
         el.classList.remove('ring');
       });
     });
+
+    new mapboxgl.Marker(el).setLngLat([place.lng, place.lat]).addTo(map);
   });
 
   const scalePercent = (defaultPxSize = 32, defaultZoom = 2, scaleFactor = 0.1) => {
@@ -48,7 +50,6 @@
 
   // Add the marker to the map
   // if (!place.lng || !place.lat) return;
-  new mapboxgl.Marker(el).setLngLat([place.lng, place.lat]).addTo(map);
 </script>
 
 <div bind:this={el} class="marker">
