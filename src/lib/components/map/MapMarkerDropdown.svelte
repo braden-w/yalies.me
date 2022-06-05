@@ -1,8 +1,8 @@
 <script lang="ts">
+  import MapMarkerDropdownList from './MapMarkerDropdownList.svelte';
   import MapMarkerDropdownStackOfIcons from './MapMarkerDropdownStackOfIcons.svelte';
 
   import type { definitionsJSON, Person, PersonFromFacebook } from '$lib/types/definitionsJSON';
-  import { generateHover, generateStackOfIcons } from '$lib/utils/map/generateInnerHTML';
 
   export let place: definitionsJSON['places_with_people'] | definitionsJSON['places_with_facebook'];
 
@@ -19,12 +19,7 @@
   const { place_id, description } = place;
 </script>
 
-<div class="dropdown dropdown-hover">
+<div class="dropdown-hover dropdown">
   <MapMarkerDropdownStackOfIcons threeAvatars={stackIcons} indicator={people.length} />
-  {@html generateHover({
-    numberOfIconsStacked: stackIcons.length,
-    place_id: place_id ?? '',
-    description: description ?? '',
-    people,
-  })}
+  <MapMarkerDropdownList numberOfIconsStacked={stackIcons.length} {place_id} {description} {people} />
 </div>
