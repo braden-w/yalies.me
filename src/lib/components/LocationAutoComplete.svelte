@@ -14,7 +14,7 @@
 </script>
 
 <script lang="ts">
-  import BackspaceIcon from './BackspaceIcon.svelte';
+  import BackspaceIcon from '$lib/components/icons/BackspaceIcon.svelte';
 
   import { defaultResults } from '$lib/components/LocationAutoComplete/DefaultResults';
   import { profileStore, setUserLocation } from '$lib/stores/auth/profileStore';
@@ -140,7 +140,7 @@
         />
         <button class="btn btn-ghost btn-circle border-accent border-opacity-20" on:click={resetLocation}>
           <!-- Insert a backspace svg -->
-          <BackspaceIcon></BackspaceIcon>
+          <BackspaceIcon />
         </button>
       </div>
     {/if}
