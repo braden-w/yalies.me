@@ -2,11 +2,6 @@
   @component
   Generates a stack of icons with three random people and an indicator in the top right for overall number of people at a location -->
 <script lang="ts">
-  import { key } from '$lib/components/map/mapbox';
-  import { getContext, onMount } from 'svelte';
-  const { getMap } = getContext(key);
-  const map = getMap();
-
   export let threeAvatars: string[];
   export let indicator: number;
 
