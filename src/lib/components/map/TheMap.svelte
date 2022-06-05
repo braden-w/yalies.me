@@ -1,6 +1,5 @@
 <script lang="ts">
   import { key } from '$lib/components/map/mapbox';
-
   import MapboxGeocoder from '@mapbox/mapbox-gl-geocoder';
   import '@mapbox/mapbox-gl-geocoder/dist/mapbox-gl-geocoder.css';
   import mapboxgl from 'mapbox-gl';

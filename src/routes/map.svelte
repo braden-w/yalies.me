@@ -1,5 +1,8 @@
 <script context="module" lang="ts">
+  import TheMap from '$lib/components/map/TheMap.svelte';
+  import TheMapMarkers from '$lib/components/map/TheMapMarkers.svelte';
   import { loadFacebook } from '$lib/stores/map/facebook';
+  import { placesAndTheirPeopleStore,refreshPlacesAndTheirPeopleStore } from '$lib/stores/placesAndTheirPeopleStore';
 
   export const prerender = false;
   /** List all places from the database. Return it as a list of items that contains place description, place lat, place lng, and place people
@@ -14,10 +17,7 @@
 </script>
 
 <script lang="ts">
-  import TheMap from '$lib/components/map/TheMap.svelte';
-  import TheMapMarkers from '$lib/components/map/TheMapMarkers.svelte';
-  import { placesAndTheirPeopleStore, refreshPlacesAndTheirPeopleStore } from '$lib/stores/placesAndTheirPeopleStore';
-  let places = $placesAndTheirPeopleStore ?? [];
+    let places = $placesAndTheirPeopleStore ?? [];
 </script>
 
 <svelte:head>

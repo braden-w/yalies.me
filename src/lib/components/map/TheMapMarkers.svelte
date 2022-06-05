@@ -1,10 +1,9 @@
 <script lang="ts">
   import type { definitionsJSON } from '$lib/types/definitionsJSON.js';
   import { generateInnerHTML } from '$lib/utils/map/generateInnerHTML.js';
-
-  import { getContext, onMount } from 'svelte';
-  import { mapboxgl, key } from './mapbox.js';
-
+  import { getContext,onMount } from 'svelte';
+  import { key,mapboxgl } from './mapbox.js';
+  
   const { getMap } = getContext(key);
   const map = getMap();
 
