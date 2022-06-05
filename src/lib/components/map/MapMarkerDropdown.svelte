@@ -17,9 +17,6 @@
       return person.avatar_url;
     });
   const { place_id, description } = place;
-
-  // Three cases for the number of people in the placeWithPeople
-  // if (stackIcons.length === 0) return '';
 </script>
 
 <div class="dropdown dropdown-hover">
