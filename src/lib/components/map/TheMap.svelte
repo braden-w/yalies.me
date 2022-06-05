@@ -78,7 +78,4 @@
     <slot />
   {/if}
 </div>
-
-<!-- <div id="map" class="h-screen-nav w-full" /> -->
-
 <!-- <button class="btn" on:click={generateFacebookMarkers} /> -->
