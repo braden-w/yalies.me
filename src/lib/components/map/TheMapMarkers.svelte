@@ -10,20 +10,20 @@
 
   export let place: definitionsJSON['places_with_people'];
 
-  let el;
+  let el: HTMLDivElement;
   onMount(() => {
+    // On click, add a shadow around it
+    el.addEventListener('click', () => {
+      // For every element in el with a class "outline-on-click", add the class "ring" to it
+      el.querySelectorAll('.outline-on-click').forEach((el) => {
+        el.classList.add('ring');
+      });
+    });
     const { people } = place;
     const threeAvatars = people.slice(0, 3).map((person) => person.avatar_url);
     const indicator = people.length;
     const html = generateInnerHTML({ threeAvatars, indicator });
     el.innerHTML = html;
-  });
-  // On click, add a shadow around it
-  el.addEventListener('click', () => {
-    // For every element in el with a class "outline-on-click", add the class "ring" to it
-    el.querySelectorAll('.outline-on-click').forEach((el) => {
-      el.classList.add('ring');
-    });
   });
 
   // On click out, add a shadow around it
