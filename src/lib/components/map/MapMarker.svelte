@@ -1,9 +1,10 @@
 <script lang="ts">
+  import MapDropdown from './MapMarkerDropdown.svelte';
+
   import type { definitionsJSON } from '$lib/types/definitionsJSON.js';
-  import { generateInnerHTML } from '$lib/utils/map/generateInnerHTML.js';
-  import { getContext,onMount } from 'svelte';
-  import { key,mapboxgl } from './mapbox.js';
-  
+  import { getContext, onMount } from 'svelte';
+  import { key, mapboxgl } from './mapbox.js';
+
   const { getMap } = getContext(key);
   const map = getMap();
 
@@ -51,5 +52,5 @@
 </script>
 
 <div bind:this={el} class="marker">
-  {@html generateInnerHTML(place)}
+  <MapDropdown {place} />
 </div>

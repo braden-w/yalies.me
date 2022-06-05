@@ -1,36 +1,6 @@
 import { profileStore } from '$lib/stores/auth/profileStore';
-import type { definitionsJSON, Person, PersonFromFacebook } from '$lib/types/definitionsJSON';
+import type { Person, PersonFromFacebook } from '$lib/types/definitionsJSON';
 import { get } from 'svelte/store';
-
-export function generateInnerHTML(
-  place: definitionsJSON['places_with_people'] | definitionsJSON['places_with_facebook']
-) {
-  // Get 3 random people from the 'people' property of placeWithPeople
-  const people = place.people ?? [];
-  /**The first three people who will be the icons in the stack on the map */
-  const stackIcons = people
-    .sort(() => 0.5 - Math.random())
-    .slice(0, 3)
-    .map((person) => {
-      return (<Person>person).avatar_url ?? (<PersonFromFacebook>person).avatar_url;
-    });
-  const { place_id, description } = place;
-
-  // Three cases for the number of people in the placeWithPeople
-  if (stackIcons.length === 0) return '';
-  return `<div class="dropdown dropdown-hover">
-  ${generateStackOfIcons({
-    threeAvatars: stackIcons,
-    indicator: people.length,
-  })}
-  ${generateHover({
-    numberOfIconsStacked: stackIcons.length,
-    place_id: place_id ?? '',
-    description: description ?? '',
-    people,
-  })}
-</div>`;
-}
 
 /**Generates a stack of icons with three random people and an indicator in the top right for overall number of people at a location */
 export function generateStackOfIcons({
@@ -84,7 +54,7 @@ export function generateStackOfIcons({
 }
 
 /**Generates the dropdown menu that is created when you hover on a component */
-function generateHover({
+export function generateHover({
   numberOfIconsStacked,
   place_id,
   description,
@@ -125,7 +95,7 @@ function peopleToListItems(people: (Person | PersonFromFacebook)[]): string {
         <div class="avatar">
           <div class="w-8 rounded-lg">
             <img src="${
-              (<Person>person).avatar_url ?? (<PersonFromFacebook>person).image
+              (<Person>person).avatar_url ?? (<PersonFromFacebook>person).avatar_url
             }" referrerpolicy="no-referrer" />
           </div>
         </div>
