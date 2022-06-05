@@ -19,18 +19,13 @@
         el.classList.add('ring');
       });
     });
-    const { people } = place;
-    const threeAvatars = people.slice(0, 3).map((person) => person.avatar_url);
-    const indicator = people.length;
-    const html = generateInnerHTML({ threeAvatars, indicator });
-    el.innerHTML = html;
-  });
 
-  // On click out, add a shadow around it
-  document.getElementsByClassName('mapboxgl-canvas')[0].addEventListener('click', () => {
-    // For every element in el with a class "outline-on-click", remove the class "ring" to it if it exists
-    el.querySelectorAll('.outline-on-click').forEach((el) => {
-      el.classList.remove('ring');
+    // On click out, add a shadow around it
+    document.getElementsByClassName('mapboxgl-canvas')[0].addEventListener('click', () => {
+      // For every element in el with a class "outline-on-click", remove the class "ring" to it if it exists
+      el.querySelectorAll('.outline-on-click').forEach((el) => {
+        el.classList.remove('ring');
+      });
     });
   });
 
