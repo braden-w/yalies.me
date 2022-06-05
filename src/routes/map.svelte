@@ -1,6 +1,6 @@
 <script context="module" lang="ts">
   import TheMap from '$lib/components/map/TheMap.svelte';
-  import TheMapMarkers from '$lib/components/map/TheMapMarkers.svelte';
+  import TheMapMarkers from '$lib/components/map/MapMarker.svelte';
   import { loadFacebook } from '$lib/stores/map/facebook';
   import { placesAndTheirPeopleStore,refreshPlacesAndTheirPeopleStore } from '$lib/stores/placesAndTheirPeopleStore';
 
