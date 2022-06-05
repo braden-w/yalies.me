@@ -5,13 +5,13 @@
   import type { definitionsJSON } from '$lib/types/definitionsJSON';
   import { get } from 'svelte/store';
   import MapIcon from './icons/MapIcon.svelte';
-  
+
   export let userProfileInformation: definitionsJSON['users_facebook_places'] | null;
   const isCurrentUser = userProfileInformation?.id === get(profileStore)?.id;
 </script>
 
 <div
-  class="rounded-box  mx-2 flex flex-shrink-0 flex-col justify-center gap-4 bg-base-100 p-4 shadow-xl xl:mx-0 xl:w-full"
+  class="rounded-box mx-2 flex flex-shrink-0 flex-col justify-center gap-4 overflow-visible bg-base-100 p-4 shadow-xl xl:mx-0 xl:w-full"
 >
   <div class="px-6 pt-6">
     <div class="text-xl font-extrabold">Where are you now?</div>
