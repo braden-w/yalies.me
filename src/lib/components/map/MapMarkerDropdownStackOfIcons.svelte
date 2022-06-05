@@ -3,18 +3,16 @@
   Generates a stack of icons with three random people and an indicator in the top right for overall number of people at a location -->
 <script lang="ts">
   import { key } from '$lib/components/map/mapbox';
-
   import { getContext, onMount } from 'svelte';
+  const { getMap } = getContext(key);
+  const map = getMap();
 
   export let threeAvatars: string[];
   export let indicator: number;
 
   let avatarSize = 8;
-
   let ring = false;
 
-  const { getMap } = getContext(key);
-  const map = getMap();
   // On click, add a ring around it
   function addRing() {
     ring = true;
@@ -37,18 +35,12 @@
       const newPx = scalePercent();
       console.log('🚀 ~ file: map.svelte ~ line 135 ~ map.on ~ newPx', newPx);
       avatarSize = newPx;
-      // el.querySelectorAll<HTMLElement>('.outline-on-click').forEach((innerEl) => {
-      //   // Set the height and width innerEl to newPx
-      //   innerEl.style.width = `${newPx}px`;
-      //   innerEl.style.height = `${newPx}px`;
-      // });
-      // el.style.transformOrigin = 'bottom';
     });
   });
 </script>
 
 <!-- svelte-ignore a11y-label-has-associated-control -->
-<label tabindex="0" name="selected" class="stack" on:click={addShadow}>
+<label tabindex="0" name="selected" class="stack" on:click={addRing}>
   <div class="avatar indicator">
     <span class="badge indicator-item badge-secondary">{indicator}</span>
     <div class="w-{avatarSize} h-{avatarSize} outline-on-click rounded-lg" class:ring>
