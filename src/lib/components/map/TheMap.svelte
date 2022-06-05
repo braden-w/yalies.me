@@ -4,8 +4,8 @@
   import '@mapbox/mapbox-gl-geocoder/dist/mapbox-gl-geocoder.css';
   import mapboxgl from 'mapbox-gl';
   import 'mapbox-gl/dist/mapbox-gl.css';
-  import { onDestroy,setContext } from 'svelte';
-  
+  import { onDestroy, setContext } from 'svelte';
+
   // const NewHaven = { longitude: -72.9, latitude: 41.3, zoom: 8 };
   const CenterUS = { longitude: -95.7, latitude: 37.1, zoom: 2 };
 
@@ -49,6 +49,22 @@
       // loadFacebook(map!, queryYear)
     });
     // generateMarkers(map, $placesAndTheirPeopleStore);
+    const scalePercent = (defaultPxSize = 32, defaultZoom = 2, scaleFactor = 0.1) => {
+      const scalePercent = 1 + (map.getZoom() - defaultZoom) * scaleFactor;
+      return defaultPxSize * scalePercent;
+    };
+
+    /** Scale icons on zoom */
+    map.on('zoom', () => {
+      const newPx = scalePercent();
+      console.log('🚀 ~ file: map.svelte ~ line 135 ~ map.on ~ newPx', newPx);
+      document.querySelectorAll<HTMLElement>('.outline-on-click').forEach((innerEl) => {
+        // Set the height and width innerEl to newPx
+        innerEl.style.width = `${newPx}px`;
+        innerEl.style.height = `${newPx}px`;
+        innerEl.style.transformOrigin = 'bottom';
+      });
+    });
   }
 </script>
 
