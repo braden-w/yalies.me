@@ -46,9 +46,8 @@
         speed: 2.5,
         essential: true,
       });
-      // loadFacebook(map!, queryYear)
     });
-    // generateMarkers(map, $placesAndTheirPeopleStore);
+
     const scalePercent = (defaultPxSize = 32, defaultZoom = 2, scaleFactor = 0.1) => {
       const scalePercent = 1 + (map.getZoom() - defaultZoom) * scaleFactor;
       return defaultPxSize * scalePercent;
