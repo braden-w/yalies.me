@@ -1,3 +1,6 @@
+<!-- 
+  @component
+  Generates a stack of icons with three random people and an indicator in the top right for overall number of people at a location -->
 <script lang="ts">
   export let threeAvatars: string[];
   export let indicator: number;
