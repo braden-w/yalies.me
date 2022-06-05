@@ -8,6 +8,7 @@
   const avatarSize = 8;
 </script>
 
+<!-- svelte-ignore a11y-label-has-associated-control -->
 <label tabindex="0" name="selected" class="stack">
   <div class="avatar indicator">
     <span class="badge indicator-item badge-secondary">{indicator}</span>
