@@ -28,6 +28,8 @@
       });
     });
 
+    // Add the marker to the map
+    if (!place.lng || !place.lat) return;
     new mapboxgl.Marker(el).setLngLat([place.lng, place.lat]).addTo(map);
   });
 
@@ -47,9 +49,6 @@
     });
     el.style.transformOrigin = 'bottom';
   });
-
-  // Add the marker to the map
-  // if (!place.lng || !place.lat) return;
 </script>
 
 <div bind:this={el} class="marker">
