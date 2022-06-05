@@ -12,6 +12,8 @@
 </script>
 
 <script lang="ts">
+  import TheMap from '../lib/components/map/TheMap.svelte';
+
   import { facebook, loadFacebook } from '$lib/stores/map/facebook';
   import { placesAndTheirPeopleStore, refreshPlacesAndTheirPeopleStore } from '$lib/stores/placesAndTheirPeopleStore';
   import type { definitionsJSON } from '$lib/types/definitionsJSON';
@@ -20,18 +22,29 @@
   import '@mapbox/mapbox-gl-geocoder/dist/mapbox-gl-geocoder.css';
   import mapboxgl from 'mapbox-gl';
   import 'mapbox-gl/dist/mapbox-gl.css';
-  import { onMount } from 'svelte';
+  import { onDestroy, onMount, setContext } from 'svelte';
 
   mapboxgl.accessToken = import.meta.env.VITE_MAPBOX_KEY;
 
   // const NewHaven = { longitude: -72.9, latitude: 41.3, zoom: 8 };
   const CenterUS = { longitude: -95.7, latitude: 37.1, zoom: 2 };
+  export let zoom;
 
   let generateFacebookMarkers: () => void;
 
-  onMount(() => {
+  setContext(key, {
+    getMap: () => map,
+  });
+
+  let container;
+  let map;
+  onDestroy(() => {
+    if (map) map.remove();
+  });
+
+  function load() {
     const map = new mapboxgl.Map({
-      container: 'map',
+      container,
       style: 'mapbox://styles/mapbox/dark-v10',
       center: [CenterUS.longitude, CenterUS.latitude],
       doubleClickZoom: false,
@@ -61,7 +74,7 @@
     generateFacebookMarkers = function () {
       generateMarkers(map, $facebook);
     };
-  });
+  }
 
   /** Add a marker to the map for each place */
   function generateMarkers(
@@ -117,8 +130,8 @@
 <svelte:head>
   <title>Map</title>
   <meta name="description" content="Find Yale Students in the area to meet up!" />
+  <!-- this special element will be explained in a later section -->
+  <link rel="stylesheet" href="https://unpkg.com/mapbox-gl/dist/mapbox-gl.css" on:load={load} />
 </svelte:head>
 
-<!-- Init mapbox -->
-<div id="map" class="h-screen-nav w-full" />
-<!-- <button class="btn" on:click={generateFacebookMarkers} /> -->
+<TheMap></TheMap>
