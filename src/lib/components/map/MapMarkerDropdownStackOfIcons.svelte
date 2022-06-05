@@ -15,10 +15,13 @@
 
   const { getMap } = getContext(key);
   const map = getMap();
-  onMount(() => {
-    // On click, add a shadow around it
+  // On click, add a ring around it
+  function addRing() {
+    ring = true;
+  }
 
-    // On click out, add a shadow around it
+  onMount(() => {
+    // On click out, remove ring around it
     document.getElementsByClassName('mapboxgl-canvas')[0].addEventListener('click', () => {
       // For every element in el with a class "outline-on-click", remove the class "ring" to it if it exists
       ring = false;
@@ -45,7 +48,7 @@
 </script>
 
 <!-- svelte-ignore a11y-label-has-associated-control -->
-<label tabindex="0" name="selected" class="stack" on:click={() => (ring = true)}>
+<label tabindex="0" name="selected" class="stack" on:click={addShadow}>
   <div class="avatar indicator">
     <span class="badge indicator-item badge-secondary">{indicator}</span>
     <div class="w-{avatarSize} h-{avatarSize} outline-on-click rounded-lg" class:ring>
