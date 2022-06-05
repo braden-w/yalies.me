@@ -46,7 +46,7 @@ export interface definitionsJSON extends Omit<definitions, 'places_with_people' 
     /** Format: double precision */
     lng: number;
     /** Format: json */
-    people?: (PersonFromFacebook)[];
+    people: (PersonFromFacebook)[];
   };
   user_responses: {
     /** Format: character varying */
