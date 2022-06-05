@@ -11,10 +11,6 @@
 
   let el: HTMLDivElement;
   onMount(() => {
-    // Add the marker to the map
-    if (!place.lng || !place.lat) return;
-    new mapboxgl.Marker(el).setLngLat([place.lng, place.lat]).addTo(map);
-
     const scalePercent = (defaultPxSize = 32, defaultZoom = 2, scaleFactor = 0.1) => {
       const scalePercent = 1 + (map.getZoom() - defaultZoom) * scaleFactor;
       return defaultPxSize * scalePercent;
@@ -31,6 +27,10 @@
       });
       el.style.transformOrigin = 'bottom';
     });
+
+    // Add the marker to the map
+    if (!place.lng || !place.lat) return;
+    new mapboxgl.Marker(el).setLngLat([place.lng, place.lat]).addTo(map);
   });
 </script>
 
