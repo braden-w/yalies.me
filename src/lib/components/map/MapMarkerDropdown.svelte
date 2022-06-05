@@ -3,19 +3,18 @@
   import MapMarkerDropdownList from './MapMarkerDropdownList.svelte';
   import MapMarkerDropdownStackOfIcons from './MapMarkerDropdownStackOfIcons.svelte';
 
-  export let place: definitionsJSON['places_with_people'] | definitionsJSON['places_with_facebook'];
+  export let place_id: string;
+  export let description: string;
+  export let people: definitionsJSON['places_with_people']['people'];
 
-  // Get 3 random people from the 'people' property of placeWithPeople
-  const people = place.people ?? [];
-
-  /** The first three people who will be the icons in the stack on the map */
+  /** Get 3 random people from the 'people' property of placeWithPeople.
+   * The first three people who will be the icons in the stack on the map */
   const stackIcons = people
     .sort(() => 0.5 - Math.random())
     .slice(0, 3)
     .map((person) => {
       return person.avatar_url;
     });
-  const { place_id, description } = place;
 </script>
 
 <div class="dropdown-hover dropdown">
