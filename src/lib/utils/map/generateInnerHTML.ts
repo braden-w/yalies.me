@@ -2,57 +2,6 @@ import { profileStore } from '$lib/stores/auth/profileStore';
 import type { Person, PersonFromFacebook } from '$lib/types/definitionsJSON';
 import { get } from 'svelte/store';
 
-/**Generates a stack of icons with three random people and an indicator in the top right for overall number of people at a location */
-export function generateStackOfIcons({
-  threeAvatars,
-  indicator,
-}: {
-  threeAvatars: string[];
-  indicator: number;
-}): string {
-  const avatarSize = 8;
-  return `<label tabindex="0" name="selected" class="stack">
-    <div class="avatar indicator">
-      <span class="indicator-item badge badge-secondary"
-        >${indicator}</span
-      >
-      <div class="w-${avatarSize} h-${avatarSize} rounded-lg outline-on-click">
-        <img
-          src="${threeAvatars[0]}"
-          referrerpolicy="no-referrer"
-        />
-      </div>
-    </div>
-    ${
-      threeAvatars.length >= 2
-        ? `
-    <div class="avatar">
-      <div class="w-${avatarSize} h-${avatarSize} rounded-lg outline-on-click">
-        <img
-          src="${threeAvatars[1]}"
-          referrerpolicy="no-referrer"
-        />
-      </div>
-    </div>
-    `
-        : ''
-    } ${
-    threeAvatars.length >= 3
-      ? `
-    <div class="avatar">
-      <div class="w-${avatarSize} h-${avatarSize} rounded-lg outline-on-click">
-        <img
-          src="${threeAvatars[2]}"
-          referrerpolicy="no-referrer"
-        />
-      </div>
-    </div>
-    `
-      : ''
-  }
-  </label>`;
-}
-
 /**Generates the dropdown menu that is created when you hover on a component */
 export function generateHover({
   numberOfIconsStacked,
