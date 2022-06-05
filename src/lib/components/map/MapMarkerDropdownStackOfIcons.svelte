@@ -9,19 +9,19 @@
   <div class="avatar indicator">
     <span class="badge indicator-item badge-secondary">{indicator}</span>
     <div class="w-{avatarSize} h-{avatarSize} outline-on-click rounded-lg">
-      <img src={threeAvatars[0]} referrerpolicy="no-referrer" />
+      <img src={threeAvatars[0]} referrerpolicy="no-referrer" alt="Avatar" />
     </div>
   </div>
   {#if threeAvatars.length >= 2}
     <div class="avatar">
       <div class="w-{avatarSize} h-{avatarSize} outline-on-click rounded-lg">
-        <img src={threeAvatars[1]} referrerpolicy="no-referrer" />
+        <img src={threeAvatars[1]} referrerpolicy="no-referrer" alt="Avatar" />
       </div>
     </div>
   {:else if threeAvatars.length >= 3}
     <div class="avatar">
       <div class="w-{avatarSize} h-{avatarSize} outline-on-click rounded-lg">
-        <img src={threeAvatars[2]} referrerpolicy="no-referrer" />
+        <img src={threeAvatars[2]} referrerpolicy="no-referrer" alt="Avatar" />
       </div>
     </div>
   {/if}
