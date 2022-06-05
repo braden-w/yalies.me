@@ -1,15 +1,13 @@
 <script lang="ts">
-  import { facebook, loadFacebook } from '$lib/stores/map/facebook';
-  import { placesAndTheirPeopleStore, refreshPlacesAndTheirPeopleStore } from '$lib/stores/placesAndTheirPeopleStore';
+  import { key } from '$lib/components/map/mapbox';
+
   import type { definitionsJSON } from '$lib/types/definitionsJSON';
   import { generateInnerHTML } from '$lib/utils/map/generateInnerHTML';
   import MapboxGeocoder from '@mapbox/mapbox-gl-geocoder';
   import '@mapbox/mapbox-gl-geocoder/dist/mapbox-gl-geocoder.css';
   import mapboxgl from 'mapbox-gl';
   import 'mapbox-gl/dist/mapbox-gl.css';
-  import { onDestroy, } from 'svelte';
-
-  mapboxgl.accessToken = import.meta.env.VITE_MAPBOX_KEY;
+  import { onDestroy, setContext } from 'svelte';
 
   // const NewHaven = { longitude: -72.9, latitude: 41.3, zoom: 8 };
   const CenterUS = { longitude: -95.7, latitude: 37.1, zoom: 2 };
@@ -54,13 +52,10 @@
       });
       // loadFacebook(map!, queryYear)
     });
-
-    generateMarkers(map, $placesAndTheirPeopleStore);
-    generateFacebookMarkers = function () {
-      generateMarkers(map, $facebook);
-    };
+    // generateMarkers(map, $placesAndTheirPeopleStore);
   }
 
+  // generateMarkers(map, $facebook);
   /** Add a marker to the map for each place */
   function generateMarkers(
     map: mapboxgl.Map,
@@ -112,12 +107,18 @@
   }
 </script>
 
+<svelte:head>
+  <!-- this special element will be explained in a later section -->
+  <link rel="stylesheet" href="https://unpkg.com/mapbox-gl/dist/mapbox-gl.css" on:load={load} />
+</svelte:head>
+
 <!-- Init mapbox -->
-<div bind:this={container}>
+<div bind:this={container} class="h-screen-nav w-full">
   {#if map}
     <slot />
   {/if}
 </div>
 
-<div id="map" class="h-screen-nav w-full" />
+<!-- <div id="map" class="h-screen-nav w-full" /> -->
+
 <!-- <button class="btn" on:click={generateFacebookMarkers} /> -->
