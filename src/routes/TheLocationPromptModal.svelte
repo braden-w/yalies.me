@@ -9,7 +9,7 @@
   }
 </script>
 
-<div class="modal modal-bottom sm:modal-middle" class:modal-open={modalOpen}>
+<div class="modal modal-bottom sm:modal-middle" class:modal-open={modalOpen ?? true}>
   <div class="modal-box overflow-visible">
     <div class="text-xl font-extrabold">Where are you now?</div>
     <div class="my-4 text-xs text-base-content/70">
