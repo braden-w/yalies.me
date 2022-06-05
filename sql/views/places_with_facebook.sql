@@ -30,4 +30,9 @@ SELECT
       AND image IS NOT NULL
   ) AS people
 FROM
-  places;
+  places
+WHERE
+  places.place_id IS NOT NULL
+  AND places.description IS NOT NULL
+  AND places.lat IS NOT NULL
+  AND places.lng IS NOT NULL;
