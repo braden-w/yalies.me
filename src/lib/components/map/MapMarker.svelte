@@ -35,7 +35,5 @@
 </script>
 
 <div bind:this={el} class="marker">
-  {#if place.place_id && place.description && place.people}
-    <MapMarkerDropdown place_id={place.place_id} description={place.description} people={place.people} />
-  {/if}
+  <MapMarkerDropdown place_id={place.place_id} description={place.description} people={place.people} />
 </div>
