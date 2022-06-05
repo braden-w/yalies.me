@@ -38,13 +38,13 @@ export interface definitionsJSON extends Omit<definitions, 'places_with_people' 
      * @description Note:
      * This is a Primary Key.<pk/>
      */
-    place_id?: string;
+    place_id: string;
     /** Format: character varying */
-    description?: string;
+    description: string;
     /** Format: double precision */
-    lat?: number;
+    lat: number;
     /** Format: double precision */
-    lng?: number;
+    lng: number;
     /** Format: json */
     people?: (PersonFromFacebook)[];
   };
