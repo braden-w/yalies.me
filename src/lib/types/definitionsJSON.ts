@@ -30,7 +30,7 @@ export interface definitionsJSON extends Omit<definitions, 'places_with_people' 
     /** Format: double precision */
     lng: number;
     /** Format: json */
-    people?: (Person)[];
+    people: (Person)[];
   };
     places_with_facebook: {
     /**
