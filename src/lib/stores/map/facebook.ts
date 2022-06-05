@@ -2,7 +2,7 @@ import type { definitionsJSON } from '$lib/types/definitionsJSON';
 import { supabase } from '$lib/utils/supabaseClient';
 import { writable, type Writable } from 'svelte/store';
 
-export const facebook: Writable<definitionsJSON['facebook_to_places'][] | null> = writable(null);
+export const facebook: Writable<definitionsJSON['places_with_facebook'][] | null> = writable(null);
 
 export async function loadFacebook() {
   const { data, error } = await supabase
