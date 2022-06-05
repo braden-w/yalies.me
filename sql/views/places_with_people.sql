@@ -19,7 +19,7 @@ SELECT
       )
     FROM
       users
-      INNER JOIN user_responses on users.user_response_id = user_responses.user_response_id
+      INNER JOIN user_responses ON users.user_response_id = user_responses.user_response_id
     WHERE
       user_responses.place_id = places.place_id
   ) AS people
