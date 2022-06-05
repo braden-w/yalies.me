@@ -32,7 +32,7 @@
       </p>
     </div>
     <div class="card w-full max-w-sm flex-shrink-0 bg-base-100 shadow-2xl">
-      <div class="card-body text-base-content">
+      <div class="card-body overflow-visible text-base-content">
         <div class="text-center">
           <div class="avatar mx-auto">
             <div class="w-28 rounded">
