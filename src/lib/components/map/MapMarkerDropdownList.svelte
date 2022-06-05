@@ -1,9 +1,9 @@
 <!-- @component Generates the dropdown menu that is created when you hover on a component -->
 <script lang="ts">
   import { profileStore } from '$lib/stores/auth/profileStore';
-  import type { Person, PersonFromFacebook } from '$lib/types/definitionsJSON';
+  import type { Person,PersonFromFacebook } from '$lib/types/definitionsJSON';
   import { get } from 'svelte/store';
-
+  
   export let numberOfIconsStacked: number;
   export let place_id: string;
   export let description: string;

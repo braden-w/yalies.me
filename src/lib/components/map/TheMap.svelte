@@ -4,8 +4,8 @@
   import '@mapbox/mapbox-gl-geocoder/dist/mapbox-gl-geocoder.css';
   import mapboxgl from 'mapbox-gl';
   import 'mapbox-gl/dist/mapbox-gl.css';
-  import { onDestroy, setContext } from 'svelte';
-
+  import { onDestroy,setContext } from 'svelte';
+  
   // const NewHaven = { longitude: -72.9, latitude: 41.3, zoom: 8 };
   const CenterUS = { longitude: -95.7, latitude: 37.1, zoom: 2 };
 

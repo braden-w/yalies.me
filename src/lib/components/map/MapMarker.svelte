@@ -1,10 +1,9 @@
 <script lang="ts">
   import MapMarkerDropdown from '$lib/components/map/MapMarkerDropdown.svelte';
-
   import type { definitionsJSON } from '$lib/types/definitionsJSON.js';
-  import { getContext, onMount } from 'svelte';
-  import { key, mapboxgl } from './mapbox.js';
-
+  import { getContext,onMount } from 'svelte';
+  import { key,mapboxgl } from './mapbox.js';
+    
   const { getMap } = getContext(key);
   const map = getMap();
 
