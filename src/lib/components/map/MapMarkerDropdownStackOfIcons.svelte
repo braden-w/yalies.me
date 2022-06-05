@@ -24,18 +24,6 @@
       // For every element in el with a class "outline-on-click", remove the class "ring" to it if it exists
       ring = false;
     });
-
-    const scalePercent = (defaultPxSize = 32, defaultZoom = 2, scaleFactor = 0.1) => {
-      const scalePercent = 1 + (map.getZoom() - defaultZoom) * scaleFactor;
-      return defaultPxSize * scalePercent;
-    };
-
-    /** Scale icons on zoom */
-    map.on('zoom', () => {
-      const newPx = scalePercent();
-      console.log('🚀 ~ file: map.svelte ~ line 135 ~ map.on ~ newPx', newPx);
-      avatarSize = newPx;
-    });
   });
 </script>
 
