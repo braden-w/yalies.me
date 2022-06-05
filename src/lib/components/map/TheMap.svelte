@@ -23,7 +23,7 @@
   });
 
   function load() {
-    const map = new mapboxgl.Map({
+    map = new mapboxgl.Map({
       container,
       style: 'mapbox://styles/mapbox/dark-v10',
       center: [CenterUS.longitude, CenterUS.latitude],
