@@ -45,7 +45,6 @@
       accessToken: mapboxgl.accessToken,
       placeholder: 'Jump to City...',
       marker: false,
-      /*     mapboxgl: mapboxgl, */
     });
     map.addControl(geocoder);
 
