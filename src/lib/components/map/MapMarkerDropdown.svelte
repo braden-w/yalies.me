@@ -2,7 +2,7 @@
   import type { definitionsJSON } from '$lib/types/definitionsJSON';
   import MapMarkerDropdownList from './MapMarkerDropdownList.svelte';
   import MapMarkerDropdownStackOfIcons from './MapMarkerDropdownStackOfIcons.svelte';
-    
+
   export let place: definitionsJSON['places_with_people'] | definitionsJSON['places_with_facebook'];
 
   // Get 3 random people from the 'people' property of placeWithPeople
