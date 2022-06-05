@@ -121,4 +121,4 @@
 
 <!-- Init mapbox -->
 <div id="map" class="h-screen-nav w-full" />
-<button class="btn" on:click={generateFacebookMarkers} />
+<!-- <button class="btn" on:click={generateFacebookMarkers} /> -->
