@@ -28,7 +28,7 @@
       center: [CenterUS.longitude, CenterUS.latitude],
       doubleClickZoom: false,
       zoom: CenterUS.zoom,
-      maxZoom: 10,
+      // maxZoom: 10,
     });
 
     /** Add a search bar to the map */
@@ -78,8 +78,13 @@
           coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
         }
 
-        new mapboxgl.Popup().setLngLat(coordinates).setHTML(`${description}
-        ${people}`).addTo(map);
+        new mapboxgl.Popup()
+          .setLngLat(coordinates)
+          .setHTML(
+            `${description}
+        ${people}`
+          )
+          .addTo(map);
       });
     });
 
