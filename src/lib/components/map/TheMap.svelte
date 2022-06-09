@@ -73,7 +73,7 @@
             ],
           },
           'circle-color': '#f00',
-          'circle-opacity': 0.5
+          'circle-opacity': 0.5,
         },
       });
 
@@ -81,9 +81,8 @@
         map.getCanvas().style.cursor = 'pointer';
         // Copy coordinates array.
         const coordinates = e.features[0].geometry.coordinates.slice();
-        const place = e.features[0] as Feature
-        console.log("🚀 ~ file: TheMap.svelte ~ line 82 ~ map.on ~ place", place)
-        
+        const place = e.features[0] as Feature;
+        console.log('🚀 ~ file: TheMap.svelte ~ line 82 ~ map.on ~ place', place);
 
         // Ensure that if the map is zoomed out such that multiple
         // copies of the feature are visible, the popup appears
@@ -95,7 +94,7 @@
         currentPopup = new mapboxgl.Popup()
           .setLngLat(coordinates)
           .setHTML(
-`<ul
+            `<ul
     class="dropdown-content menu menu-compact mt-{2} rounded-box w-52 bg-base-100 p-2 shadow"
   >
     <li>
@@ -103,9 +102,10 @@
         ${place.properties.description}
       </a>
     </li>
-    ${eval(place.properties.people as unknown as string).map((person) => {
-      // TODO: Modify a href
-      return `<li>
+    ${eval(place.properties.people as unknown as string)
+      .map((person) => {
+        // TODO: Modify a href
+        return `<li>
         <a class="content-center" href="${person.email}">
           <div class="avatar">
             <div class="w-8 rounded-lg">
@@ -115,7 +115,8 @@
           <span class="text-xs">${person.name}</span>
         </a>
       </li>`;
-    }).join('')}
+      })
+      .join('')}
   </ul>`
           )
           .addTo(map);
