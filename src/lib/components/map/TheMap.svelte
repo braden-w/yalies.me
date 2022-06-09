@@ -22,6 +22,7 @@
     if (map) map.remove();
   });
   let currentPopup: mapboxgl.Popup;
+  let pinnedPopup: mapboxgl.Popup;
 
   function load() {
     map = new mapboxgl.Map({
@@ -79,16 +80,10 @@
 
       map.on('mouseover', 'geojson', (e) => {
         map.getCanvas().style.cursor = 'pointer';
-      });
-      map.on('mouseleave', 'geojson', () => {
-        map.getCanvas().style.cursor = '';
-      });
-
-      map.on('click', 'geojson', (e) => {
-        if (currentPopup) currentPopup.remove();
         // Copy coordinates array.
         const coordinates = e.features[0].geometry.coordinates.slice();
         const place = e.features[0] as Feature;
+        const people = eval(place.properties.people as unknown as string) as Feature['properties']['people'];
         console.log('🚀 ~ file: TheMap.svelte ~ line 82 ~ map.on ~ place', place);
 
         // Ensure that if the map is zoomed out such that multiple
@@ -109,7 +104,58 @@
         ${place.properties.description}
       </a>
     </li>
-    ${eval(place.properties.people as unknown as string)
+    ${people
+      .map((person) => {
+        // TODO: Modify a href
+        return `<li>
+        <a class="content-center" href="${person.email}">
+          <div class="avatar">
+            <div class="w-8 rounded-lg">
+              <img src=${person.avatar_url} referrerpolicy="no-referrer" alt="Avatar" />
+            </div>
+          </div>
+          <span class="text-xs">${person.name}</span>
+        </a>
+      </li>`;
+      })
+      .join('')}
+  </ul>`
+          )
+          .addTo(map);
+      });
+
+      map.on('mouseleave', 'geojson', () => {
+        map.getCanvas().style.cursor = '';
+        if (currentPopup) currentPopup.remove();
+      });
+
+      map.on('click', 'geojson', (e) => {
+        if (pinnedPopup) pinnedPopup.remove();
+        // Copy coordinates array.
+        const coordinates = e.features[0].geometry.coordinates.slice();
+        const place = e.features[0] as Feature;
+        const people = eval(place.properties.people as unknown as string) as Feature['properties']['people'];
+        console.log('🚀 ~ file: TheMap.svelte ~ line 82 ~ map.on ~ place', place);
+
+        // Ensure that if the map is zoomed out such that multiple
+        // copies of the feature are visible, the popup appears
+        // over the copy being pointed to.
+        while (Math.abs(e.lngLat.lng - coordinates[0]) > 180) {
+          coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
+        }
+
+        pinnedPopup = new mapboxgl.Popup()
+          .setLngLat(coordinates)
+          .setHTML(
+            `<ul
+    class="dropdown-content menu menu-compact mt-{2} rounded-box w-52 bg-base-100 p-2 shadow"
+  >
+    <li>
+      <a class="justify-between" href="/places/${place.properties.place_id}">
+        ${place.properties.description}
+      </a>
+    </li>
+    ${people
       .map((person) => {
         // TODO: Modify a href
         return `<li>
