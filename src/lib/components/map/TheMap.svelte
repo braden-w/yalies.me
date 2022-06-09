@@ -46,6 +46,22 @@
         speed: 2.5,
         essential: true,
       });
+      map.addSource('geojson', {
+        type: 'geojson',
+        data: 'https://gist.githubusercontent.com/braden-w/c2c907d98ad973d119324df77864d7ee/raw/be5c237e5372c4e84a04bda22844baa44cd8c432/places_with_facebook_geojson.json',
+      });
+      map.addLayer({
+        id: 'places',
+        type: 'circle',
+        source: 'geojson',
+        paint: {
+          'circle-radius': {
+            base: 1.75,
+            stops: [[12, 2], [22, 180]],
+          },
+          'circle-color': '#f00',
+        },
+      });
     });
 
     const scalePercent = (defaultPxSize = 32, defaultZoom = 2, scaleFactor = 0.1) => {
