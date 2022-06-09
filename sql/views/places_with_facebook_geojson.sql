@@ -12,12 +12,13 @@ FROM
         SELECT
           'Feature' AS TYPE,
           ST_AsGeoJSON(ST_Transform(lg.geog :: geometry, 4326), 15, 0) :: json AS geometry,
-          row_to_json(
-            (
-              place_id,
-              description,
-              people
-            )
+          json_build_object (
+            'place_id',
+            lg.place_id,
+            'description',
+            lg.description,
+            'people',
+            lg.people
           ) AS properties
         FROM
           places_with_facebook AS lg
