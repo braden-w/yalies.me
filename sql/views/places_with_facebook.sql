@@ -2,6 +2,7 @@ CREATE MATERIALIZED VIEW places_with_facebook AS
 SELECT
   places.place_id,
   places.description,
+  places.geog,
   places.lat,
   places.lng,
   (
@@ -10,12 +11,8 @@ SELECT
         json_build_object(
           'email',
           facebook.email,
-          'first_name',
-          facebook.first_name,
-          'middle_name',
-          facebook.middle_name,
-          'last_name',
-          facebook.last_name,
+          'name',
+          CONCAT(facebook.first_name, ' ', facebook.last_name),
           'avatar_url',
           facebook.image,
           'year',
