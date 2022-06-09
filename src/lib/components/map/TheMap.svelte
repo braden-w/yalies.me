@@ -104,8 +104,6 @@
 
     /** Scale icons on zoom */
     map.on('zoom', () => {
-      // Log current map zoom level
-      console.log(map.getZoom());
       const newPx = scalePercent();
       // console.log('🚀 ~ file: map.svelte ~ line 135 ~ map.on ~ newPx', newPx);
       document.querySelectorAll<HTMLElement>('.outline-on-click').forEach((innerEl) => {
