@@ -54,15 +54,24 @@
         id: 'geojson',
         type: 'circle',
         source: 'geojson',
+        // Alternative paint style
+        // paint: {
+        //   'circle-radius': ['get', 'people'],
+        //   'circle-color': '#fbb03b',
+        //   'circle-opacity': 0.5,
+        // },
         paint: {
           'circle-radius': {
             base: 1.75,
             stops: [
-              [12, 2],
+              [2, 2],
+              [6, 4],
+              [10, 8],
               [22, 180],
             ],
           },
           'circle-color': '#f00',
+          'circle-opacity': 0.5
         },
       });
       map.on('mouseover', 'geojson', (e) => {
@@ -95,6 +104,8 @@
 
     /** Scale icons on zoom */
     map.on('zoom', () => {
+      // Log current map zoom level
+      console.log(map.getZoom());
       const newPx = scalePercent();
       // console.log('🚀 ~ file: map.svelte ~ line 135 ~ map.on ~ newPx', newPx);
       document.querySelectorAll<HTMLElement>('.outline-on-click').forEach((innerEl) => {
