@@ -65,11 +65,11 @@
           'circle-color': '#f00',
         },
       });
-      map.on('click', 'geojson', (e) => {
-        console.log("🚀 ~ file: TheMap.svelte ~ line 82 ~ map.on ~ e", e)
+      map.on('mouseover', 'geojson', (e) => {
         // Copy coordinates array.
         const coordinates = e.features[0].geometry.coordinates.slice();
         const description = e.features[0].properties.description;
+        const people = e.features[0].properties.people;
 
         // Ensure that if the map is zoomed out such that multiple
         // copies of the feature are visible, the popup appears
@@ -78,7 +78,8 @@
           coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
         }
 
-        new mapboxgl.Popup().setLngLat(coordinates).setHTML(description).addTo(map);
+        new mapboxgl.Popup().setLngLat(coordinates).setHTML(`${description}
+        ${people}`).addTo(map);
       });
     });
 
