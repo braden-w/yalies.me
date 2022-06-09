@@ -14,9 +14,9 @@ FROM
           ST_AsGeoJSON(ST_Transform(lg.geog :: geometry, 4326), 15, 0) :: json AS geometry,
           row_to_json(
             (
-              lg.place_id,
-              lg.description,
-              lg.people
+              place_id,
+              description,
+              people
             )
           ) AS properties
         FROM
