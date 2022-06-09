@@ -79,6 +79,13 @@
 
       map.on('mouseover', 'geojson', (e) => {
         map.getCanvas().style.cursor = 'pointer';
+      });
+      map.on('mouseleave', 'geojson', () => {
+        map.getCanvas().style.cursor = '';
+      });
+
+      map.on('click', 'geojson', (e) => {
+        if (currentPopup) currentPopup.remove();
         // Copy coordinates array.
         const coordinates = e.features[0].geometry.coordinates.slice();
         const place = e.features[0] as Feature;
@@ -121,11 +128,6 @@
           )
           .addTo(map);
       });
-    });
-
-    map.on('mouseleave', 'geojson', () => {
-      map.getCanvas().style.cursor = '';
-      currentPopup.remove();
     });
 
     const scalePercent = (defaultPxSize = 32, defaultZoom = 2, scaleFactor = 0.1) => {
