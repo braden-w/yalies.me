@@ -1,8 +1,8 @@
 <script lang="ts">
   import MapMarkerDropdownStackOfIcons from '$lib/components/map/MapMarkerDropdownStackOfIcons.svelte';
   import type { placesAndTheirPeopleStore } from '$lib/stores/placesAndTheirPeopleStore';
-  import type { definitionsJSON,Person } from '$lib/types/definitionsJSON';
-  
+  import type { definitionsJSON, Person } from '$lib/types/definitionsJSON';
+
   function getThreeAvatarUrls(place: definitionsJSON['places_with_people']) {
     return place.people?.slice(0, 3).map((person) => (<Person>person).avatar_url);
   }
