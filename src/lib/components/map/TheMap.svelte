@@ -1,5 +1,6 @@
 <script lang="ts">
   import { key } from '$lib/components/map/mapbox';
+import type { Feature } from '$lib/stores/map/facebook';
   import MapboxGeocoder from '@mapbox/mapbox-gl-geocoder';
   import '@mapbox/mapbox-gl-geocoder/dist/mapbox-gl-geocoder.css';
   import mapboxgl from 'mapbox-gl';
@@ -77,8 +78,9 @@
       map.on('mouseover', 'geojson', (e) => {
         // Copy coordinates array.
         const coordinates = e.features[0].geometry.coordinates.slice();
-        const description = e.features[0].properties.description;
-        const people = e.features[0].properties.people;
+        const place = e.features[0] as Feature
+        console.log("🚀 ~ file: TheMap.svelte ~ line 82 ~ map.on ~ place", place)
+        
 
         // Ensure that if the map is zoomed out such that multiple
         // copies of the feature are visible, the popup appears
@@ -90,8 +92,28 @@
         new mapboxgl.Popup()
           .setLngLat(coordinates)
           .setHTML(
-            `${description}
-        ${people}`
+`<ul
+    class="dropdown-content menu menu-compact mt-{2} rounded-box w-52 bg-base-100 p-2 shadow"
+  >
+    <li>
+      <a class="justify-between" href="/places/${place.properties.place_id}">
+        ${place.properties.description}
+      </a>
+    </li>
+    ${eval(place.properties.people as unknown as string).map((person) => {
+      // TODO: Modify a href
+      return `<li>
+        <a class="content-center" href="${person.email}">
+          <div class="avatar">
+            <div class="w-8 rounded-lg">
+              <img src=${person.avatar_url} referrerpolicy="no-referrer" alt="Avatar" />
+            </div>
+          </div>
+          <span class="text-xs">${person.name}</span>
+        </a>
+      </li>`;
+    }).join('')}
+  </ul>`
           )
           .addTo(map);
       });
