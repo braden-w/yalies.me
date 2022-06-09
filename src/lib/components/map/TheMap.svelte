@@ -1,6 +1,6 @@
 <script lang="ts">
   import { key } from '$lib/components/map/mapbox';
-import type { Feature } from '$lib/stores/map/facebook';
+  import type { Feature } from '$lib/stores/map/facebook';
   import MapboxGeocoder from '@mapbox/mapbox-gl-geocoder';
   import '@mapbox/mapbox-gl-geocoder/dist/mapbox-gl-geocoder.css';
   import mapboxgl from 'mapbox-gl';
@@ -21,6 +21,7 @@ import type { Feature } from '$lib/stores/map/facebook';
   onDestroy(() => {
     if (map) map.remove();
   });
+  let currentPopup: mapboxgl.Popup;
 
   function load() {
     map = new mapboxgl.Map({
@@ -75,7 +76,9 @@ import type { Feature } from '$lib/stores/map/facebook';
           'circle-opacity': 0.5
         },
       });
+
       map.on('mouseover', 'geojson', (e) => {
+        map.getCanvas().style.cursor = 'pointer';
         // Copy coordinates array.
         const coordinates = e.features[0].geometry.coordinates.slice();
         const place = e.features[0] as Feature
@@ -89,7 +92,7 @@ import type { Feature } from '$lib/stores/map/facebook';
           coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
         }
 
-        new mapboxgl.Popup()
+        currentPopup = new mapboxgl.Popup()
           .setLngLat(coordinates)
           .setHTML(
 `<ul
@@ -117,6 +120,11 @@ import type { Feature } from '$lib/stores/map/facebook';
           )
           .addTo(map);
       });
+    });
+
+    map.on('mouseleave', 'geojson', () => {
+      map.getCanvas().style.cursor = '';
+      currentPopup.remove();
     });
 
     const scalePercent = (defaultPxSize = 32, defaultZoom = 2, scaleFactor = 0.1) => {
