@@ -29,12 +29,12 @@
 
 <div class="min-h-screen-nav hero bg-base-200">
   <div class="h-full w-full">
-      <!-- Cell 1 -->
-      <div class="col-span-4 row-span-3 xl:col-span-2">
-        <UserCard {userProfileInformation} />
-      </div>
-      <!-- Cell 2 -->
-        <!-- <UserLocationCard {userProfileInformation} /> -->
+    <!-- Cell 1 -->
+    <div class="col-span-4 row-span-3 xl:col-span-2">
+      <UserCard {userProfileInformation} />
+    </div>
+    <!-- Cell 2 -->
+    <!-- <UserLocationCard {userProfileInformation} /> -->
   </div>
 </div>
 <!-- <div class="divider divider-horizontal">OR</div> -->

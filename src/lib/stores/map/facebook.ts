@@ -4,7 +4,9 @@ export const facebook: Writable<GeoJSON | null> = writable(null);
 
 export async function loadFacebook() {
   // Load json data from hosted GeoJSON file
-  const response = await fetch('https://raw.githubusercontent.com/braden-w/yalies.me-geojson/main/places_with_facebook_geojson.json?token=GHSAT0AAAAAABVNYPU3IW4HYNVANZWIBTTKYVCUSEQ');
+  const response = await fetch(
+    'https://raw.githubusercontent.com/braden-w/yalies.me-geojson/main/places_with_facebook_geojson.json?token=GHSAT0AAAAAABVNYPU3IW4HYNVANZWIBTTKYVCUSEQ'
+  );
   const data = await response.json();
   facebook.set(data);
 }
