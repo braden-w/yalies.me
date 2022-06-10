@@ -11,7 +11,6 @@
    */
   export async function load() {
     await refreshPlacesAndTheirPeopleStore();
-    await loadFacebook();
     return { status: 200 };
   }
 </script>
