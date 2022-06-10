@@ -8,29 +8,43 @@ export interface Person {
 
 export interface PersonFromFacebook {
   email: string;
-  first_name: string;
-  middle_name: string;
-  last_name: string;
+  name: string;
   avatar_url: string;
   year: number;
 }
 
-export interface definitionsJSON extends Omit<definitions, 'places_with_people' | 'user_responses'> {
+export interface definitionsJSON extends Omit<definitions, 'places_with_people' | 'places_with_facebook' | 'user_responses'> {
   places_with_people: {
     /**
      * Format: character varying
      * @description Note:
      * This is a Primary Key.<pk/>
      */
-    place_id?: string;
+    place_id: string;
     /** Format: character varying */
-    description?: string;
+    description: string;
     /** Format: double precision */
-    lat?: number;
+    lat: number;
     /** Format: double precision */
-    lng?: number;
+    lng: number;
     /** Format: json */
-    people?: (Person | PersonFromFacebook)[];
+    people: (Person)[];
+  };
+    places_with_facebook: {
+    /**
+     * Format: character varying
+     * @description Note:
+     * This is a Primary Key.<pk/>
+     */
+    place_id: string;
+    /** Format: character varying */
+    description: string;
+    /** Format: double precision */
+    lat: number;
+    /** Format: double precision */
+    lng: number;
+    /** Format: json */
+    people: (PersonFromFacebook)[];
   };
   user_responses: {
     /** Format: character varying */
