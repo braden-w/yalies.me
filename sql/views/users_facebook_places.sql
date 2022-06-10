@@ -3,7 +3,7 @@ CREATE
 OR REPLACE VIEW users_facebook_places AS
 SELECT
   users.id,
-  users.email,
+  COALESCE(users.email, facebook.email) as email,
   users.user_response_id,
   COALESCE(
     users.name,
@@ -27,4 +27,4 @@ FROM
   LEFT JOIN places ON places.place_id = user_responses.place_id FULL
   JOIN facebook ON users.email = facebook.email
 WHERE
-  facebook.year IS NOT NULL;
+  facebook.year IS NOT NULL and facebook.email IS NOT NULL;
