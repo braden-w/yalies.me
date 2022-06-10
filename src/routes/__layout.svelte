@@ -53,8 +53,6 @@
 </script>
 
 <script lang="ts">
-  import TheLocationPromptModal from './TheLocationPromptModal.svelte';
-
   import '../app.css';
 
   // Initialize theme-change, taken from https://github.com/saadeghi/theme-change
@@ -139,7 +137,6 @@
     </div>
   </footer>
 </TheNavBar>
-<TheLocationPromptModal />
 
 <style>
 </style>

@@ -16,6 +16,8 @@
 </script>
 
 <script lang="ts">
+import TheLocationPromptModal from "$lib/components/TheLocationPromptModal.svelte";
+
   let places = $placesAndTheirPeopleStore ?? [];
 </script>
 
@@ -29,3 +31,4 @@
     <MapMarker {place} />
   {/each}
 </TheMap>
+<TheLocationPromptModal />
