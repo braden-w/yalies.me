@@ -22,7 +22,11 @@
           </label>
         </div>
         <div class="flex-1">
-          <a sveltekit:prefetch href={$profileStore !== null ? '/locations' : '/'} class="btn btn-ghost text-xl normal-case">
+          <a
+            sveltekit:prefetch
+            href={$profileStore !== null ? '/locations' : '/'}
+            class="btn btn-ghost text-xl normal-case"
+          >
             Yalies.Me
           </a>
         </div>
