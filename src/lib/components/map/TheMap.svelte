@@ -1,6 +1,16 @@
 <script lang="ts" context="module">
-  function createPopup({ coordinates, place, people, map}: {coordinates: any, place: Feature, people: Feature['properties']['people'], map: mapboxgl.Map}): mapboxgl.Popup {
-    const popup = new mapboxgl.Popup({closeButton:false, closeOnClick:false})
+  function createPopup({
+    coordinates,
+    place,
+    people,
+    map,
+  }: {
+    coordinates: any;
+    place: Feature;
+    people: Feature['properties']['people'];
+    map: mapboxgl.Map;
+  }): mapboxgl.Popup {
+    const popup = new mapboxgl.Popup({ closeButton: false, closeOnClick: false })
       .setLngLat(coordinates)
       .setHTML(
         `<ul
@@ -29,8 +39,8 @@
   </ul>`
       )
       .addTo(map);
-      popup.addClassName('dropdown-hover');
-      return popup;
+    popup.addClassName('dropdown-hover');
+    return popup;
   }
 </script>
 
@@ -87,7 +97,7 @@
       });
       map.addSource('geojson', {
         type: 'geojson',
-        data: import.meta.env.GEOJSON_GITHUB_URL,
+        data: 'https://raw.githubusercontent.com/braden-w/yalies.me-geojson/main/places_with_facebook_geojson.json?token=GHSAT0AAAAAABVNYPU3IW4HYNVANZWIBTTKYVCUSEQ',
       });
       map.addLayer({
         id: 'geojson',
@@ -129,7 +139,7 @@
           coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
         }
 
-        currentPopup = createPopup({ coordinates, place, people, map})
+        currentPopup = createPopup({ coordinates, place, people, map });
       });
 
       map.on('mouseleave', 'geojson', () => {
@@ -152,7 +162,7 @@
           coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
         }
 
-        pinnedPopup = createPopup({ coordinates, place, people, map})
+        pinnedPopup = createPopup({ coordinates, place, people, map });
       });
     });
 
