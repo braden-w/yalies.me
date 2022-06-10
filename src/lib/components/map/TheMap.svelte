@@ -1,5 +1,51 @@
+<script lang="ts" context="module">
+  function createPopup({
+    coordinates,
+    place,
+    people,
+    map,
+  }: {
+    coordinates: any;
+    place: Feature;
+    people: Feature['properties']['people'];
+    map: mapboxgl.Map;
+  }): mapboxgl.Popup {
+    const popup = new mapboxgl.Popup({ closeButton: false, closeOnClick: false })
+      .setLngLat(coordinates)
+      .setHTML(
+        `<ul
+    class="dropdown-content menu menu-compact mt-{2} rounded-box w-52 bg-base-100 p-2 shadow"
+  >
+    <li>
+      <a class="justify-between" href="/places/${place.properties.place_id}">
+        ${place.properties.description}
+      </a>
+    </li>
+    ${people
+      .map((person) => {
+        return `<li>
+        <a class="content-center" href="/facebook/${person.email}">
+          <div class="avatar">
+            <div class="w-8 rounded-lg">
+              <img src=${person.avatar_url} referrerpolicy="no-referrer" alt="Avatar" />
+            </div>
+          </div>
+          <span class="text-xs">${person.name}</span>
+        </a>
+      </li>`;
+      })
+      .join('')}
+  </ul>`
+      )
+      .addTo(map);
+    popup.addClassName('dropdown-hover');
+    return popup;
+  }
+</script>
+
 <script lang="ts">
   import { key } from '$lib/components/map/mapbox';
+  import type { Feature } from '$lib/stores/map/facebook';
   import MapboxGeocoder from '@mapbox/mapbox-gl-geocoder';
   import '@mapbox/mapbox-gl-geocoder/dist/mapbox-gl-geocoder.css';
   import mapboxgl from 'mapbox-gl';
@@ -8,8 +54,6 @@
 
   // const NewHaven = { longitude: -72.9, latitude: 41.3, zoom: 8 };
   const CenterUS = { longitude: -95.7, latitude: 37.1, zoom: 2 };
-
-  let generateFacebookMarkers: () => void;
 
   setContext(key, {
     getMap: () => map,
@@ -20,6 +64,8 @@
   onDestroy(() => {
     if (map) map.remove();
   });
+  let currentPopup: mapboxgl.Popup;
+  let pinnedPopup: mapboxgl.Popup;
 
   function load() {
     map = new mapboxgl.Map({
@@ -28,7 +74,7 @@
       center: [CenterUS.longitude, CenterUS.latitude],
       doubleClickZoom: false,
       zoom: CenterUS.zoom,
-      // maxZoom: 10,
+      maxZoom: 10,
     });
 
     /** Add a search bar to the map */
@@ -48,7 +94,7 @@
       });
       map.addSource('geojson', {
         type: 'geojson',
-        data: 'https://gist.githubusercontent.com/braden-w/c2c907d98ad973d119324df77864d7ee/raw/be5c237e5372c4e84a04bda22844baa44cd8c432/places_with_facebook_geojson.json',
+        data: 'https://raw.githubusercontent.com/braden-w/yalies.me-geojson/main/places_with_facebook_geojson.json?token=GHSAT0AAAAAABVNYPU3IW4HYNVANZWIBTTKYVCUSEQ',
       });
       map.addLayer({
         id: 'geojson',
@@ -66,19 +112,21 @@
             stops: [
               [2, 2],
               [6, 4],
-              [10, 8],
-              [14, 24],
+              [10, 12],
             ],
           },
           'circle-color': '#f00',
-          'circle-opacity': 0.5
+          'circle-opacity': 0.5,
         },
       });
+
       map.on('mouseover', 'geojson', (e) => {
+        map.getCanvas().style.cursor = 'pointer';
         // Copy coordinates array.
-        const coordinates = e.features[0].geometry.coordinates.slice();
-        const description = e.features[0].properties.description;
-        const people = e.features[0].properties.people;
+        const place = e.features?.[0] as unknown as Feature;
+        const coordinates = place.geometry.coordinates.slice();
+        const people = eval(place.properties.people as unknown as string) as Feature['properties']['people'];
+        console.log('🚀 ~ file: TheMap.svelte ~ line 82 ~ map.on ~ place', place);
 
         // Ensure that if the map is zoomed out such that multiple
         // copies of the feature are visible, the popup appears
@@ -87,13 +135,37 @@
           coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
         }
 
-        new mapboxgl.Popup()
-          .setLngLat(coordinates)
-          .setHTML(
-            `${description}
-        ${people}`
-          )
-          .addTo(map);
+        currentPopup = createPopup({ coordinates, place, people, map });
+      });
+
+      map.on('mouseleave', 'geojson', () => {
+        map.getCanvas().style.cursor = '';
+        if (currentPopup) currentPopup.remove();
+      });
+
+      map.on('click', 'geojson', (e) => {
+        e.preventDefault();
+        if (pinnedPopup) pinnedPopup.remove();
+        // Copy coordinates array.
+        const place = e.features?.[0] as unknown as Feature;
+        const coordinates = place.geometry.coordinates.slice();
+        const people = eval(place.properties.people as unknown as string) as Feature['properties']['people'];
+        console.log('🚀 ~ file: TheMap.svelte ~ line 82 ~ map.on ~ place', place);
+
+        // Ensure that if the map is zoomed out such that multiple
+        // copies of the feature are visible, the popup appears
+        // over the copy being pointed to.
+        while (Math.abs(e.lngLat.lng - coordinates[0]) > 180) {
+          coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
+        }
+
+        pinnedPopup = createPopup({ coordinates, place, people, map });
+      });
+
+      map.on('click', function (e) {
+        if (e.defaultPrevented === false) {
+          if (pinnedPopup) pinnedPopup.remove();
+        }
       });
     });
 
@@ -104,8 +176,6 @@
 
     /** Scale icons on zoom */
     map.on('zoom', () => {
-      // Log current map zoom level
-      console.log(map.getZoom());
       const newPx = scalePercent();
       // console.log('🚀 ~ file: map.svelte ~ line 135 ~ map.on ~ newPx', newPx);
       document.querySelectorAll<HTMLElement>('.outline-on-click').forEach((innerEl) => {
@@ -129,4 +199,3 @@
     <slot />
   {/if}
 </div>
-<!-- <button class="btn" on:click={generateFacebookMarkers} /> -->

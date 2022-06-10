@@ -21,6 +21,6 @@ FROM
             lg.people
           ) AS properties
         FROM
-          places_with_facebook AS lg
+          places_with_facebook AS lg where lg.people is not null
       ) AS f
   ) AS fc;
