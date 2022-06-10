@@ -10,7 +10,7 @@
 </script>
 
 <script lang="ts">
-import TheLocationPromptModal from "$lib/components/TheLocationPromptModal.svelte";
+  import TheLocationPromptModal from '$lib/components/TheLocationPromptModal.svelte';
 </script>
 
 <svelte:head>
