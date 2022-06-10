@@ -1,3 +1,37 @@
+<script lang="ts" context="module">
+  function createPopup({ coordinates, place, people, map}): mapboxgl.Popup {
+    return new mapboxgl.Popup()
+      .setLngLat(coordinates)
+      .setHTML(
+        `<ul
+    class="dropdown-content menu menu-compact mt-{2} rounded-box w-52 bg-base-100 p-2 shadow"
+  >
+    <li>
+      <a class="justify-between" href="/places/${place.properties.place_id}">
+        ${place.properties.description}
+      </a>
+    </li>
+    ${people
+      .map((person) => {
+        // TODO: Modify a href
+        return `<li>
+        <a class="content-center" href="${person.email}">
+          <div class="avatar">
+            <div class="w-8 rounded-lg">
+              <img src=${person.avatar_url} referrerpolicy="no-referrer" alt="Avatar" />
+            </div>
+          </div>
+          <span class="text-xs">${person.name}</span>
+        </a>
+      </li>`;
+      })
+      .join('')}
+  </ul>`
+      )
+      .addTo(map);
+  }
+</script>
+
 <script lang="ts">
   import { key } from '$lib/components/map/mapbox';
   import type { Feature } from '$lib/stores/map/facebook';
@@ -93,35 +127,7 @@
           coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
         }
 
-        currentPopup = new mapboxgl.Popup()
-          .setLngLat(coordinates)
-          .setHTML(
-            `<ul
-    class="dropdown-content menu menu-compact mt-{2} rounded-box w-52 bg-base-100 p-2 shadow"
-  >
-    <li>
-      <a class="justify-between" href="/places/${place.properties.place_id}">
-        ${place.properties.description}
-      </a>
-    </li>
-    ${people
-      .map((person) => {
-        // TODO: Modify a href
-        return `<li>
-        <a class="content-center" href="${person.email}">
-          <div class="avatar">
-            <div class="w-8 rounded-lg">
-              <img src=${person.avatar_url} referrerpolicy="no-referrer" alt="Avatar" />
-            </div>
-          </div>
-          <span class="text-xs">${person.name}</span>
-        </a>
-      </li>`;
-      })
-      .join('')}
-  </ul>`
-          )
-          .addTo(map);
+        currentPopup = createPopup({ coordinates, place, people, map})
       });
 
       map.on('mouseleave', 'geojson', () => {
@@ -144,35 +150,7 @@
           coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
         }
 
-        pinnedPopup = new mapboxgl.Popup()
-          .setLngLat(coordinates)
-          .setHTML(
-            `<ul
-    class="dropdown-content menu menu-compact mt-{2} rounded-box w-52 bg-base-100 p-2 shadow"
-  >
-    <li>
-      <a class="justify-between" href="/places/${place.properties.place_id}">
-        ${place.properties.description}
-      </a>
-    </li>
-    ${people
-      .map((person) => {
-        // TODO: Modify a href
-        return `<li>
-        <a class="content-center" href="${person.email}">
-          <div class="avatar">
-            <div class="w-8 rounded-lg">
-              <img src=${person.avatar_url} referrerpolicy="no-referrer" alt="Avatar" />
-            </div>
-          </div>
-          <span class="text-xs">${person.name}</span>
-        </a>
-      </li>`;
-      })
-      .join('')}
-  </ul>`
-          )
-          .addTo(map);
+        pinnedPopup = createPopup({ coordinates, place, people, map})
       });
     });
 
