@@ -14,4 +14,7 @@
   .h-screen-nav {
     height: calc(100vh - 4rem);
   }
+  .h-screen-nav-button {
+    height: calc(100vh - 4rem - 4rem);
+  }
 }
