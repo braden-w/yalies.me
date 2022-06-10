@@ -170,9 +170,3 @@
     </div>
   </div>
 </div>
-
-<style>
-  .h-screen-nav-buttons {
-    height: calc(100vh - 4rem - 4rem);
-  }
-</style>
