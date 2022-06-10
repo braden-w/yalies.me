@@ -148,6 +148,7 @@
       });
 
       map.on('click', 'geojson', (e) => {
+        e.preventDefault();
         if (pinnedPopup) pinnedPopup.remove();
         // Copy coordinates array.
         const place = e.features?.[0] as unknown as Feature;
@@ -163,6 +164,12 @@
         }
 
         pinnedPopup = createPopup({ coordinates, place, people, map });
+      });
+
+      map.on('click', function (e) {
+        if (e.defaultPrevented === false) {
+          if (pinnedPopup) pinnedPopup.remove();
+        }
       });
     });
 
