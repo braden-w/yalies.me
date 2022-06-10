@@ -26,10 +26,7 @@
 </svelte:head>
 
 <TheMap>
-  {#each places as place} 
+  {#each places as place}
     <MapMarker {place} />
   {/each}
-  <!-- {#each $facebook.features as facebookPlace}
-    <FacebookMapMarker place={facebookPlace} />
-  {/each} -->
 </TheMap>
