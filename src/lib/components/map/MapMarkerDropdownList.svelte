@@ -38,7 +38,7 @@
             <img src={person.avatar_url} referrerpolicy="no-referrer" alt="Avatar" />
           </div>
         </div>
-        <span class="text-xs">{person.name ?? `${person.first_name} ${person.last_name}`}</span>
+        <span class="text-xs">{person.name}</span>
       </a>
     </li>
   {/each}

@@ -28,7 +28,7 @@
       center: [CenterUS.longitude, CenterUS.latitude],
       doubleClickZoom: false,
       zoom: CenterUS.zoom,
-      maxZoom: 10,
+      // maxZoom: 10,
     });
 
     /** Add a search bar to the map */
@@ -46,6 +46,55 @@
         speed: 2.5,
         essential: true,
       });
+      map.addSource('geojson', {
+        type: 'geojson',
+        data: 'https://gist.githubusercontent.com/braden-w/c2c907d98ad973d119324df77864d7ee/raw/be5c237e5372c4e84a04bda22844baa44cd8c432/places_with_facebook_geojson.json',
+      });
+      map.addLayer({
+        id: 'geojson',
+        type: 'circle',
+        source: 'geojson',
+        // Alternative paint style
+        // paint: {
+        //   'circle-radius': ['get', 'people'],
+        //   'circle-color': '#fbb03b',
+        //   'circle-opacity': 0.5,
+        // },
+        paint: {
+          'circle-radius': {
+            base: 1.75,
+            stops: [
+              [2, 2],
+              [6, 4],
+              [10, 8],
+              [14, 24],
+            ],
+          },
+          'circle-color': '#f00',
+          'circle-opacity': 0.5
+        },
+      });
+      map.on('mouseover', 'geojson', (e) => {
+        // Copy coordinates array.
+        const coordinates = e.features[0].geometry.coordinates.slice();
+        const description = e.features[0].properties.description;
+        const people = e.features[0].properties.people;
+
+        // Ensure that if the map is zoomed out such that multiple
+        // copies of the feature are visible, the popup appears
+        // over the copy being pointed to.
+        while (Math.abs(e.lngLat.lng - coordinates[0]) > 180) {
+          coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
+        }
+
+        new mapboxgl.Popup()
+          .setLngLat(coordinates)
+          .setHTML(
+            `${description}
+        ${people}`
+          )
+          .addTo(map);
+      });
     });
 
     const scalePercent = (defaultPxSize = 32, defaultZoom = 2, scaleFactor = 0.1) => {
@@ -55,6 +104,8 @@
 
     /** Scale icons on zoom */
     map.on('zoom', () => {
+      // Log current map zoom level
+      console.log(map.getZoom());
       const newPx = scalePercent();
       // console.log('🚀 ~ file: map.svelte ~ line 135 ~ map.on ~ newPx', newPx);
       document.querySelectorAll<HTMLElement>('.outline-on-click').forEach((innerEl) => {

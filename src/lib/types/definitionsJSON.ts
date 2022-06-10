@@ -13,7 +13,8 @@ export interface PersonFromFacebook {
   year: number;
 }
 
-export interface definitionsJSON extends Omit<definitions, 'places_with_people' | 'places_with_facebook' | 'user_responses'> {
+export interface definitionsJSON
+  extends Omit<definitions, 'places_with_people' | 'places_with_facebook' | 'user_responses'> {
   places_with_people: {
     /**
      * Format: character varying
@@ -28,9 +29,9 @@ export interface definitionsJSON extends Omit<definitions, 'places_with_people' 
     /** Format: double precision */
     lng: number;
     /** Format: json */
-    people: (Person)[];
+    people: Person[];
   };
-    places_with_facebook: {
+  places_with_facebook: {
     /**
      * Format: character varying
      * @description Note:
@@ -44,7 +45,7 @@ export interface definitionsJSON extends Omit<definitions, 'places_with_people' 
     /** Format: double precision */
     lng: number;
     /** Format: json */
-    people: (PersonFromFacebook)[];
+    people: PersonFromFacebook[];
   };
   user_responses: {
     /** Format: character varying */
