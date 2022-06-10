@@ -1,6 +1,6 @@
 <script lang="ts" context="module">
   function createPopup({ coordinates, place, people, map}: {coordinates: any, place: Feature, people: Feature['properties']['people'], map: mapboxgl.Map}): mapboxgl.Popup {
-    return new mapboxgl.Popup()
+    const popup = new mapboxgl.Popup({closeButton:false, closeOnClick:false})
       .setLngLat(coordinates)
       .setHTML(
         `<ul
@@ -29,6 +29,8 @@
   </ul>`
       )
       .addTo(map);
+      popup.addClassName('dropdown-hover');
+      return popup;
   }
 </script>
 
