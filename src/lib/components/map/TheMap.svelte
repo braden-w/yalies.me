@@ -23,9 +23,8 @@
     </li>
     ${people
       .map((person) => {
-        // TODO: Modify a href
         return `<li>
-        <a class="content-center" href="${person.email}">
+        <a class="content-center" href="/facebook/${person.email}">
           <div class="avatar">
             <div class="w-8 rounded-lg">
               <img src=${person.avatar_url} referrerpolicy="no-referrer" alt="Avatar" />
