@@ -1,5 +1,5 @@
 <script lang="ts" context="module">
-  function createPopup({ coordinates, place, people, map}): mapboxgl.Popup {
+  function createPopup({ coordinates, place, people, map}: {coordinates: any, place: Feature, people: Feature['properties']['people'], map: mapboxgl.Map}): mapboxgl.Popup {
     return new mapboxgl.Popup()
       .setLngLat(coordinates)
       .setHTML(
@@ -115,8 +115,8 @@
       map.on('mouseover', 'geojson', (e) => {
         map.getCanvas().style.cursor = 'pointer';
         // Copy coordinates array.
-        const coordinates = e.features[0].geometry.coordinates.slice();
-        const place = e.features[0] as Feature;
+        const place = e.features?.[0] as unknown as Feature;
+        const coordinates = place.geometry.coordinates.slice();
         const people = eval(place.properties.people as unknown as string) as Feature['properties']['people'];
         console.log('🚀 ~ file: TheMap.svelte ~ line 82 ~ map.on ~ place', place);
 
@@ -138,8 +138,8 @@
       map.on('click', 'geojson', (e) => {
         if (pinnedPopup) pinnedPopup.remove();
         // Copy coordinates array.
-        const coordinates = e.features[0].geometry.coordinates.slice();
-        const place = e.features[0] as Feature;
+        const place = e.features?.[0] as unknown as Feature;
+        const coordinates = place.geometry.coordinates.slice();
         const people = eval(place.properties.people as unknown as string) as Feature['properties']['people'];
         console.log('🚀 ~ file: TheMap.svelte ~ line 82 ~ map.on ~ place', place);
 
