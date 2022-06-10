@@ -56,8 +56,6 @@
   // const NewHaven = { longitude: -72.9, latitude: 41.3, zoom: 8 };
   const CenterUS = { longitude: -95.7, latitude: 37.1, zoom: 2 };
 
-  let generateFacebookMarkers: () => void;
-
   setContext(key, {
     getMap: () => map,
   });
@@ -202,4 +200,3 @@
     <slot />
   {/if}
 </div>
-<!-- <button class="btn" on:click={generateFacebookMarkers} /> -->
