@@ -886,6 +886,7 @@ export interface paths {
         query: {
           place_id?: parameters['rowFilter.places_with_facebook.place_id'];
           description?: parameters['rowFilter.places_with_facebook.description'];
+          geog?: parameters['rowFilter.places_with_facebook.geog'];
           lat?: parameters['rowFilter.places_with_facebook.lat'];
           lng?: parameters['rowFilter.places_with_facebook.lng'];
           people?: parameters['rowFilter.places_with_facebook.people'];
@@ -916,66 +917,37 @@ export interface paths {
         206: unknown;
       };
     };
-    post: {
+  };
+  '/places_with_facebook_geojson': {
+    get: {
       parameters: {
-        body: {
-          /** places_with_facebook */
-          places_with_facebook?: definitions['places_with_facebook'];
-        };
         query: {
+          geojson?: parameters['rowFilter.places_with_facebook_geojson.geojson'];
           /** Filtering Columns */
           select?: parameters['select'];
+          /** Ordering */
+          order?: parameters['order'];
+          /** Limiting and Pagination */
+          offset?: parameters['offset'];
+          /** Limiting and Pagination */
+          limit?: parameters['limit'];
         };
         header: {
+          /** Limiting and Pagination */
+          Range?: parameters['range'];
+          /** Limiting and Pagination */
+          'Range-Unit'?: parameters['rangeUnit'];
           /** Preference */
-          Prefer?: parameters['preferReturn'];
+          Prefer?: parameters['preferCount'];
         };
       };
       responses: {
-        /** Created */
-        201: unknown;
-      };
-    };
-    delete: {
-      parameters: {
-        query: {
-          place_id?: parameters['rowFilter.places_with_facebook.place_id'];
-          description?: parameters['rowFilter.places_with_facebook.description'];
-          lat?: parameters['rowFilter.places_with_facebook.lat'];
-          lng?: parameters['rowFilter.places_with_facebook.lng'];
-          people?: parameters['rowFilter.places_with_facebook.people'];
+        /** OK */
+        200: {
+          schema: definitions['places_with_facebook_geojson'][];
         };
-        header: {
-          /** Preference */
-          Prefer?: parameters['preferReturn'];
-        };
-      };
-      responses: {
-        /** No Content */
-        204: never;
-      };
-    };
-    patch: {
-      parameters: {
-        query: {
-          place_id?: parameters['rowFilter.places_with_facebook.place_id'];
-          description?: parameters['rowFilter.places_with_facebook.description'];
-          lat?: parameters['rowFilter.places_with_facebook.lat'];
-          lng?: parameters['rowFilter.places_with_facebook.lng'];
-          people?: parameters['rowFilter.places_with_facebook.people'];
-        };
-        body: {
-          /** places_with_facebook */
-          places_with_facebook?: definitions['places_with_facebook'];
-        };
-        header: {
-          /** Preference */
-          Prefer?: parameters['preferReturn'];
-        };
-      };
-      responses: {
-        /** No Content */
-        204: never;
+        /** Partial Content */
+        206: unknown;
       };
     };
   };
@@ -2393,6 +2365,26 @@ export interface paths {
       };
     };
   };
+  '/rpc/split_facebook_address_to_just_city': {
+    post: {
+      parameters: {
+        body: {
+          args: {
+            /** Format: text */
+            description: string;
+          };
+        };
+        header: {
+          /** Preference */
+          Prefer?: parameters['preferParams'];
+        };
+      };
+      responses: {
+        /** OK */
+        200: unknown;
+      };
+    };
+  };
   '/rpc/relationships_get_fams': {
     post: {
       parameters: {
@@ -2441,6 +2433,26 @@ export interface paths {
             query: string;
             /** Format: character varying */
             current_user_email: string;
+          };
+        };
+        header: {
+          /** Preference */
+          Prefer?: parameters['preferParams'];
+        };
+      };
+      responses: {
+        /** OK */
+        200: unknown;
+      };
+    };
+  };
+  '/rpc/generate_query_from_place_description': {
+    post: {
+      parameters: {
+        body: {
+          args: {
+            /** Format: text */
+            description: string;
           };
         };
         header: {
@@ -2811,12 +2823,18 @@ export interface definitions {
     place_id?: string;
     /** Format: character varying */
     description?: string;
+    /** Format: extensions.geography */
+    geog?: string;
     /** Format: double precision */
     lat?: number;
     /** Format: double precision */
     lng?: number;
     /** Format: json */
     people?: string;
+  };
+  places_with_facebook_geojson: {
+    /** Format: json */
+    geojson?: string;
   };
   places_with_people: {
     /**
@@ -3110,7 +3128,7 @@ export interface definitions {
      * @description Note:
      * This is a Primary Key.<pk/>
      */
-    place_id?: string | null;
+    place_id?: string;
     /** Format: character varying */
     description?: string;
     /** Format: character varying */
@@ -3590,12 +3608,18 @@ export interface parameters {
   'rowFilter.places_with_facebook.place_id': string;
   /** Format: character varying */
   'rowFilter.places_with_facebook.description': string;
+  /** Format: extensions.geography */
+  'rowFilter.places_with_facebook.geog': string;
   /** Format: double precision */
   'rowFilter.places_with_facebook.lat': string;
   /** Format: double precision */
   'rowFilter.places_with_facebook.lng': string;
   /** Format: json */
   'rowFilter.places_with_facebook.people': string;
+  /** @description places_with_facebook_geojson */
+  'body.places_with_facebook_geojson': definitions['places_with_facebook_geojson'];
+  /** Format: json */
+  'rowFilter.places_with_facebook_geojson.geojson': string;
   /** @description places_with_people */
   'body.places_with_people': definitions['places_with_people'];
   /** Format: character varying */
