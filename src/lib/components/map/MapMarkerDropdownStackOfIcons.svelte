@@ -14,7 +14,7 @@
   }
 
   // On click out, remove ring around it
-  document.getElementsByClassName('mapboxgl-canvas')[0].addEventListener('click', () => {
+  document.getElementsByClassName('mapboxgl-canvas')[0]?.addEventListener('click', () => {
     // For every element in el with a class "outline-on-click", remove the class "ring" to it if it exists
     ring = false;
   });
