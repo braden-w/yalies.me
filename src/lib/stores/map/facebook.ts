@@ -1,5 +1,3 @@
-import type { definitionsJSON } from '$lib/types/definitionsJSON';
-import { supabase } from '$lib/utils/supabaseClient';
 import { writable, type Writable } from 'svelte/store';
 
 export const facebook: Writable<GeoJSON | null> = writable(null);
