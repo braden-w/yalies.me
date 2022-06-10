@@ -94,7 +94,7 @@
       });
       map.addSource('geojson', {
         type: 'geojson',
-        data: 'https://raw.githubusercontent.com/braden-w/yalies.me-geojson/471f8bd8c0a1db5e8365ac7953414112ce52923b/places_with_facebook_geojson.json?token=GHSAT0AAAAAABVNYPU2YNSXMGIJTD3R52TKYVCXIOQ',
+        data: 'https://gist.githubusercontent.com/braden-w/c2c907d98ad973d119324df77864d7ee/raw/ba8bf8b564e3724e818202214de1aa8802f37535/places_with_facebook_geojson.json',
       });
       map.addLayer({
         id: 'geojson',
