@@ -67,7 +67,7 @@
       center: [CenterUS.longitude, CenterUS.latitude],
       doubleClickZoom: false,
       zoom: CenterUS.zoom,
-      // maxZoom: 10,
+      maxZoom: 10,
     });
 
     /** Add a search bar to the map */
