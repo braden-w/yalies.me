@@ -87,7 +87,7 @@
       });
       map.addSource('geojson', {
         type: 'geojson',
-        data: 'https://gist.githubusercontent.com/braden-w/c2c907d98ad973d119324df77864d7ee/raw/f08f17d5684e8eb2cd257a698cfdf45fa6f5ffc4/places_with_facebook_geojson.json',
+        data: import.meta.env.GEOJSON_GITHUB_URL,
       });
       map.addLayer({
         id: 'geojson',
